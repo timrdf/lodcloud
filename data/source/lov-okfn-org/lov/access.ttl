@@ -1,0 +1,24 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix conversion: <http://purl.org/twc/vocab/conversion/> .
+@prefix dcat:       <http://www.w3.org/ns/dcat#> .
+@prefix void:       <http://rdfs.org/ns/void#> .
+@prefix prov:       <http://www.w3.org/ns/prov#> .
+@prefix datafaqs:   <http://purl.org/twc/vocab/datafaqs#> .
+@prefix :           <http://logd.tw.rpi.edu/id/> .
+
+<http://logd.tw.rpi.edu/source/lov-okfn-org/dataset/lov>
+   a void:Dataset, dcat:Dataset;
+   conversion:source_identifier  "lov-okfn-org";
+   conversion:dataset_identifier "lov";
+   prov:wasDerivedFrom :download_f728a432-2844-40e2-af31-b3772cb2b9d7;
+.
+
+:download_f728a432-2844-40e2-af31-b3772cb2b9d7
+   a dcat:Distribution;
+   dcat:downloadURL <http://lov.okfn.org/dataset/lov/lov.rdf>;
+.
+
+<dataset/f728a432-2844-40e2-af31-b3772cb2b9d7>
+   a dcat:Dataset;
+   dcat:distribution :download_f728a432-2844-40e2-af31-b3772cb2b9d7;
+.
