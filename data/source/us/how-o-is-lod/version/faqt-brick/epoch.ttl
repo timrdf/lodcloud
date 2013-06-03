@@ -1,0 +1,61 @@
+@prefix prov:     <http://www.w3.org/ns/prov#> .
+@prefix datafaqs: <http://purl.org/twc/vocab/datafaqs#> .
+
+<> prov:wasDerivedFrom <https://github.com/timrdf/DataFAQs/blob/master/doc/examples/default/faqt-brick/epoch.ttl> .
+
+# # # # # # # # # #
+_:selectfaqtservices # Every time you load this file, we're talking about a new activity (the one you're about to instantiate).
+   a datafaqs:FAqTSelection, prov:Activity;
+   prov:wasAttributedTo
+      <http://aquarius.tw.rpi.edu/projects/datafaqs/services/sadi/core/select-faqts/identity0>;
+   prov:used
+      <http://aquarius.tw.rpi.edu/projects/datafaqstest/sadi-services/named-graphs>;
+   prov:generated _:faqtlist; # the RDF graph that via-sparql-query returns (we don't know the name of it yet until we instantiate the epoch).
+.
+
+<http://aquarius.tw.rpi.edu/projects/datafaqs/services/sadi/core/select-faqts/identity0>
+   a datafaqs:FAqTSelector, datafaqs:CoreService, datafaqs:SADIService, prov:Agent;
+.
+
+
+# # # # # # # # # #
+_:selectdatasets 
+   a datafaqs:DatasetSelection, prov:Activity;
+   prov:wasAttributedTo 
+      <http://aquarius.tw.rpi.edu/projects/datafaqs/services/sadi/core/select-datasets/by-ckan-group>;
+   prov:used 
+      <https://raw.github.com/timrdf/DataFAQs/master/services/sadi/core/select-datasets/by-ckan-group-materials/sample-inputs/datahubio-lodcloud.ttl>;
+#     <https://raw.github.com/timrdf/DataFAQs/master/services/sadi/core/select-datasets/by-ckan-group-materials/sample-inputs/datahubio-datafaqs.ttl>;
+   prov:generated _:datasetlist; # the RDF graph that by-ckan-group returns (we don't know the name of it yet until we instantiate the epoch).
+.
+
+<http://aquarius.tw.rpi.edu/projects/datafaqs/services/sadi/core/select-datasets/by-ckan-group>
+   a datafaqs:DatasetSelector, datafaqs:CoreService, datafaqs:SADIService, prov:Agent;
+.
+
+
+# # # # # # # # # #
+_:referencedatasets
+   a datafaqs:DatasetReferencing, prov:Activity;
+   prov:wasAttributedTo
+      <http://aquarius.tw.rpi.edu/projects/datafaqs/services/sadi/core/augment-datasets/with-preferred-uri-and-ckan-meta-void>;
+   prov:used _:datasetlist;
+   prov:generated _:seeAlsolist; # the RDF graph that with-preferred-uri-and-ckan-meta-void returns (we don't know the name of it yet until we instantiate the epoch).
+. 
+
+<http://aquarius.tw.rpi.edu/projects/datafaqs/services/sadi/core/augment-datasets/with-preferred-uri-and-ckan-meta-void>
+   a datafaqs:DatasetReferencer, datafaqs:CoreService, datafaqs:SADIService, prov:Agent;
+.
+
+# # # # # # # # # #
+_:augmentdatasets
+   a datafaqs:DatasetAugmenting, prov:Activity;
+   prov:wasAttributedTo
+      <http://aquarius.tw.rpi.edu/projects/datafaqstest/sadi-services/lift-ckan>;
+   prov:used      _:datasetlist;
+   prov:generated _:augmentateddataset; # the RDF graph that lift-ckan returns (we don't know the name of it yet until we instantiate the epoch).
+.
+
+<http://aquarius.tw.rpi.edu/projects/datafaqstest/sadi-services/lift-ckan>
+   a datafaqs:DatasetAugmenter, datafaqs:CoreService, datafaqs:SADIService, prov:Agent;
+.
