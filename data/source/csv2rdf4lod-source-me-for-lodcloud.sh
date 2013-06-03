@@ -104,7 +104,7 @@ export CSV2RDF4LOD_CONVERTER=""
 # see https://github.com/timrdf/csv2rdf4lod-automation/wiki/Conversion-process-phase:-name
 #
 export CSV2RDF4LOD_BASE_URI="http://logd.tw.rpi.edu"
-export CSV2RDF4LOD_BASE_URI="http://aquarius.tw.rpi.edu/projects/datafaqstest"
+export CSV2RDF4LOD_BASE_URI="http://datafaqstest.tw.rpi.edu"
 
 #
 # Customize: A base URI to use in place of CSV2RDF4LOD_BASE_URI
@@ -831,7 +831,7 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SCRIPT_PATH=""
 # (done in pvload.sh)
 #
 export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SPARQL_ENDPOINT="http://logd.tw.rpi.edu/sparql"
-export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SPARQL_ENDPOINT="http://aquarius.tw.rpi.edu/projects/datafaqstest/sparql"
+export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SPARQL_ENDPOINT="http://datafaqstest.tw.rpi.edu/sparql"
 
 
 #
@@ -846,7 +846,7 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SPARQL_ENDPOINT="http://aquarius.tw.rpi.edu/
 # (done in populate-to-endpoint.sh)
 #
 export CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT="http://logd.tw.rpi.edu/sparql" 
-export CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT="http://aquarius.tw.rpi.edu/projects/datafaqstest/sparql"
+export CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT="http://datafaqstest.tw.rpi.edu/sparql"
 
 #
 # Customize: Directory where SPARQL query files exist 
