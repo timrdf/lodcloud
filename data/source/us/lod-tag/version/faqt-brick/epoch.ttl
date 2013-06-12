@@ -7,13 +7,13 @@
 _:selectfaqtservices # Every time you load this file, we're talking about a new activity (the one you're about to instantiate).
    a datafaqs:FAqTSelection, prov:Activity;
    prov:wasAttributedTo
-      <http://aquarius.tw.rpi.edu/projects/datafaqs/services/sadi/core/select-faqts/identity0>;
+      <http://datafaqstest.tw.rpi.edu/services/sadi/core/select-faqts/identity0.py>;
    prov:used
       <http://aquarius.tw.rpi.edu/projects/datafaqstest/sadi-services/named-graphs>;
    prov:generated _:faqtlist; # the RDF graph that via-sparql-query returns (we don't know the name of it yet until we instantiate the epoch).
 .
 
-<http://aquarius.tw.rpi.edu/projects/datafaqs/services/sadi/core/select-faqts/identity0>
+<http://datafaqstest.tw.rpi.edu/services/sadi/core/select-faqts/identity0.py>
    a datafaqs:FAqTSelector, datafaqs:CoreService, datafaqs:SADIService, prov:Agent;
 .
 
