@@ -9,11 +9,11 @@ _:selectfaqtservices # Every time you load this file, we're talking about a new 
    prov:wasAttributedTo
       <http://datafaqstest.tw.rpi.edu/services/sadi/core/select-faqts/identity0.py>;
    prov:used
-      <http://aquarius.tw.rpi.edu/projects/datafaqstest/sadi-services/named-graphs>;
+      <http://aquarius.tw.rpi.edu/projects/provenanceweb/sadi-services/named-graphs>;
    prov:generated _:faqtlist; # the RDF graph that via-sparql-query returns (we don't know the name of it yet until we instantiate the epoch).
 .
 
-<http://datafaqstest.tw.rpi.edu/services/sadi/core/select-faqts/identity0.py>
+<http://aquarius.tw.rpi.edu/projects/provenanceweb/sadi-services/named-graphs>
    a datafaqs:FAqTSelector, datafaqs:CoreService, datafaqs:SADIService, prov:Agent;
 .
 
