@@ -1,0 +1,3 @@
+@prefix tag: <http://www.holygoat.co.uk/owl/redwood/0.1/tags/> .
+
+<http://datahub.io/tag/lod> a tag:Tag .
