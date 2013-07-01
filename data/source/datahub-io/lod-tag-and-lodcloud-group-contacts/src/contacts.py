@@ -4,6 +4,8 @@
 import faqt
 import ckanclient
 
+import time
+
 import sadi
 from rdflib import *
 import surf
@@ -74,7 +76,6 @@ class LODTagAndLODCloudGroupContacts(faqt.CKANReader):
    # Assumes running from working directory e.g. lod-tag-and-lodcloud-group-contacts/version/2013-Jul-01
    def process(self, input, output):
 
-
       self.ckan = self.getCKANAPI(input)
       base  = re.sub('/api$','',self.ckan.base_location) # e.g. http://datahub.io
       print 'processing ' + input.subject                # e.g. http://datahub.io/tag/lod
@@ -93,6 +94,8 @@ class LODTagAndLODCloudGroupContacts(faqt.CKANReader):
       tagged = self.ckan.last_message
       print 'package_search returned'
       for dataset in tagged['results']:
+         time.sleep(1)
+
          print
          print '  ' + dataset + ' -> ' + base + '/dataset/' + dataset
          ckan_uri = base + '/dataset/' + dataset
@@ -122,13 +125,14 @@ class LODTagAndLODCloudGroupContacts(faqt.CKANReader):
             print '    maintainer:',
             if 'maintainer_email' in package and package['maintainer_email'] is not None and self.emailish(package['maintainer_email']):
                print ' ' + package['maintainer_email'],
-               contacts.append(package['maintainer_email'])
+               if package['maintainer_email'] not in contacts:
+                  contacts.append(package['maintainer_email'])
             if 'maintainer'       in package and package['maintainer'] is not None and len(package['maintainer']) > 0:
                print ' (' + package['maintainer'] + ')',
             print
 
             if len(contacts) > 0:
-               print '      contactable via ' + "".join(contacts)
+               print '      contactable via ' + ", ".join(contacts)
                directory = directory + '/contactable'
             else:
                print '  NOT contactable'
@@ -147,7 +151,8 @@ class LODTagAndLODCloudGroupContacts(faqt.CKANReader):
                os.makedirs(directory)
 
             f = open(directory+'/'+dataset+'.txt', 'w')
-            f.write('Hello, '+label)
+            f.write('TO:      '+', '.join(contacts))
+            f.write('SUBJECT: Some questions about your dataset ('+dataset+')')
             f.close()
 
          except ckanclient.CkanApiNotFoundError:
