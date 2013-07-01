@@ -10,3 +10,4 @@ export PATH=$PATH`/home/lebot/opt/prizms/bin/install/paths.sh`
 export CLASSPATH=$CLASSPATH`/home/lebot/opt/prizms/bin/install/classpaths.sh`
 export CSV2RDF4LOD_HOME="/home/lebot/opt/prizms/repos/csv2rdf4lod-automation"
 export JENAROOT=/home/lebot/opt/apache-jena-2.10.0
+export DATAFAQS_HOME="/home/lebot/opt/prizms/repos/DataFAQs"
