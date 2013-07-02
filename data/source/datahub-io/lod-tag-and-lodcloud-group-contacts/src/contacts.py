@@ -24,6 +24,8 @@ from urlparse import urlparse, urlunparse
 import urllib
 import urllib2
 
+import csv
+
 # These are the namespaces we are using beyond those already available
 # (see http://packages.python.org/SuRF/modules/namespace.html#registered-general-purpose-namespaces)
 ns.register(moat='http://moat-project.org/ns#')
@@ -76,6 +78,21 @@ class LODTagAndLODCloudGroupContacts(faqt.CKANReader):
       
    # Assumes running from working directory e.g. lod-tag-and-lodcloud-group-contacts/version/2013-Jul-01
    def process(self, input, output):
+
+      recovered_emails = {}
+      try:
+         with open('manual/emails.csv', 'rb') as csvfile:
+            spamreader = csv.reader(csvfile, delimiter=',') #, quotechar='|')
+            for row in spamreader:
+               dataset_id = row[0]
+               emails = []
+               for c in 1,2,3:
+                  if self.emailish(row[c]) and row[c] not in emails:
+                     print dataset_id + ' <- ' + row[c] 
+                     emails.append(row[c])
+               recovered_emails[dataset_id] = emails
+      except IOError:
+         print 'WARNING: Could not find recovered emails at manual/emails.csv'
 
       self.ckan = self.getCKANAPI(input)
       base  = re.sub('/api$','',self.ckan.base_location) # e.g. http://datahub.io
@@ -154,21 +171,28 @@ class LODTagAndLODCloudGroupContacts(faqt.CKANReader):
 
             if len(contacts) > 0:
                print '      contactable via ' + ", ".join(contacts)
-               directory = directory + '/contactable'
+               directory = directory + '/is-contactable'
                for contact in contacts:
                   mbox = Thing('mailto:'+contact)
                   ckanR.foaf_mbox.append(mbox)
             else:
-               print '  NOT contactable'
-               missingContactR.sio_has_member.append(ckanR)
-               directory = directory + '/not-contactable'
+               if dataset in recovered_emails and len(recovered_emails[dataset]) > 0:
+                  print '  contact RECOVERED ' + ", ".join(recovered_emails[dataset])
+                  directory = directory + '/is-contactable-by-recovery'
+                  for contact in recovered_emails[dataset]:
+                     mbox = Thing('mailto:'+contact)
+                     ckanR.foaf_mbox.append(mbox)
+               else:
+                  print '  NOT contactable'
+                  directory = directory + '/not-contactable'
+                  missingContactR.sio_has_member.append(ckanR)
 
             questions = []
             in_lodcloud = False
             if 'lodcloud' in package['groups']:
                print '        in lodcloud group'
                in_lodcloud = True
-               directory = directory + '/in-lodcloud'
+               directory = directory + '/is-in-lodcloud'
             else:
                print '    NOT in lodcloud group'
                directory = directory + '/not-in-lodcloud'
@@ -208,7 +232,8 @@ class LODTagAndLODCloudGroupContacts(faqt.CKANReader):
                # lodcloud publishers
                body = body + str(q) + ") On a scale from 1 (very difficult) to 10 (very easy), how easy was it to fulfill the lodcloud group's metadata requirements\n   for the dataset "+dataset+" (http://www.w3.org/wiki/TaskForces/CommunityProjects/LinkingOpenData/DataSets/CKANmetainformation)?\n\n"
                q = q + 1
-               body = body + str(q) + ') On a scale from 1 (unhelpful) to 10 (very helpful), how helpful was the lodcloud validator\n   http://validator.lod-cloud.net/validate.php in helping you fulfill the lodcloud group\'s\n   metadata requirements for dataset '+dataset+'?\n\n'
+               sp = ' ' if q > 9 else ''
+               body = body + str(q) + ') On a scale from 1 (unhelpful) to 10 (very helpful), how helpful was the lodcloud validator\n'+sp+'   http://validator.lod-cloud.net/validate.php in helping you fulfill the lodcloud group\'s\n'+sp+'   metadata requirements for dataset '+dataset+'?\n\n'
                q = q + 1
 
             # All publishers:
@@ -219,29 +244,35 @@ class LODTagAndLODCloudGroupContacts(faqt.CKANReader):
             body = body + str(q) + ') On a scale from 1 (most difficult) to 10 (very easy), how easy do you think it would be\n'+sp+'   for another expert developer to reproduce the Linked Data in dataset '+dataset+'?\n\n'
             q = q + 1
             sp = ' ' if q > 9 else ''
-            body = body + str(q) + ') What factors would make it easy or difficult to reproduce the dataset '+dataset+'?\n  '+sp+' (e.g., availability of the original data, provenance available within the Linked Data itself,\n   domain expertise, thoroughness of documentation, and the tools that were used).\n\n'
+            body = body + str(q) + ') What factors would make it easy or difficult to reproduce the dataset '+dataset+'?\n  '+sp+' (e.g., availability of the original data, provenance available within the Linked Data itself,\n'+sp+'   domain expertise, thoroughness of documentation, or the tools that were used).\n\n'
             q = q + 1
             sp = ' ' if q > 9 else ''
-            body = body + str(q) + ') Would you like to see a new version of the LOD Cloud Diagram (http://lod-cloud.net)?\n '+sp+'   Why or why not?\n\n'
+            body = body + str(q) + ') Would you like to see a new version of the LOD Cloud Diagram (http://lod-cloud.net)?\n '+sp+'  Why or why not?\n\n'
 
             body = '''Hello,
 
-My name is Tim Lebo and I'm conducting a survey about Linked Data datasets listed on datahub.io.
+My name is Tim Lebo and I'm conducting a survey about Linked Data datasets on datahub.io.
 I'm contacting you because you are listed as an author or maintainer of the dataset '''+ckan_uri+'''.
 
 Would you be willing to answer the following '''+str(q)+''' questions?
 For your convenience, you can just reply directly to this email.
 
-BTW, if you're involved with more than one dataset, my apologies for contacting you about each specific one.
-If there isn't really a difference between this dataset and another one of yours, please let me know.
+I'm planning to release the survey results with a CC Zero license [1] at [2].
+I won't include your email, and I'll associate your responses to the dataset (not you).
+If that is a problem, could you let me know?
 
 Thanks so much for your consideration.
 
 Regards,
 Tim Lebo
 
+[1] http://creativecommons.org/publicdomain/zero/1.0/
+[2] https://github.com/timrdf/lodcloud/wiki/Survey-1-2013-Jun-22
+
 
 ''' + body
+#BTW, if you're involved with more than one dataset, my apologies for contacting you about each specific one.
+#If there isn't really a difference between this dataset and another one of yours, please let me know.
             f = open(directory+'/'+dataset+'.txt', 'w')
             f.write(', '.join(contacts)+'\n')
             f.write('Some questions about your dataset '+dataset+'\n')
