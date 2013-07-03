@@ -1,3 +1,4 @@
 @prefix tag: <http://www.holygoat.co.uk/owl/redwood/0.1/tags/> .
 
+<http://datahub.io/tag/debug-tinylod> a <http://www.w3.org/2000/01/rdf-schema#Resource> .
 <http://datahub.io/tag/lod> a tag:Tag .
