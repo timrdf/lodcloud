@@ -9,6 +9,7 @@ if [[ `cr-pwd-type.sh` == "cr:conversion-cockpit" ]]; then
    mkdir manual/tailored-aggregate
    mkdir manual/lod.tdb
    tdbloader --loc=manual/lod.tdb source/lod.ttl
+   tdbquery  --loc=manual/lod.tdb --query=../../src/aggregate.rq
 
    mkdir manual/tailored-aggregate/bioportal
    for email in `grep -l 'support@bioontology.org' manual/todo/*`; do mv $email manual/tailored-aggregate/bioportal/; done
@@ -22,8 +23,6 @@ if [[ `cr-pwd-type.sh` == "cr:conversion-cockpit" ]]; then
    for email in `grep -l 'info@eagle-i.org' manual/todo/*`; do mv $email manual/tailored-aggregate/eagle-i/; done
    mkdir manual/tailored-aggregate/hendler
    for email in `grep -l 'hendler@cs.rpi.edu' manual/todo/*`; do mv $email manual/tailored-aggregate/hendler/; done
-   mkdir manual/tailored-aggregate/josem
-   for email in `grep -l 'josem.alvarez@weso.es' manual/todo/*`; do mv $email manual/tailored-aggregate/josem/; done
 else
    echo need to be in cr:conversion-cockpit
 fi
