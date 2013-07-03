@@ -5,7 +5,7 @@ if [[ `cr-pwd-type.sh` == "cr:conversion-cockpit" ]]; then
    tar zxf contacts.tgz
    rm contacts.tgz
    mkdir -p manual/todo
-   for txt in `find source/ -name "*.txt"`; do ln $txt manual/todo/; done
+   for txt in `find source/ -name "*.txt" | grep -v "not-contactable"`; do ln $txt manual/todo/; done
    mkdir manual/tailored-aggregate
    mkdir manual/lod.tdb
    tdbloader --loc=manual/lod.tdb source/lod.ttl
