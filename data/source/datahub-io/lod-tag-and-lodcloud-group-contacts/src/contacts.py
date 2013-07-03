@@ -209,23 +209,23 @@ class LODTagAndLODCloudGroupContacts(faqt.CKANReader):
                body = body + str(q) + ') Does the tag "lod" on the dataset '+dataset+' mean "Linked Open Data"?\n\n'            
                q = q + 1
 
-            body = body + str(q) + ') What kind of organization produced the dataset '+dataset+'? Feel free to list all that apply.\n   (e.g., academic, commercial, government, personal, etc.)\n\n'
+            body = body + str(q) + ') What type of organization produced the dataset '+dataset+'?\n   (e.g., academic, commercial, government, personal, etc.) Please list all that apply.\n\n'
             q = q + 1
-            body = body + str(q) + ') What tools were used to create and publish the dataset '+dataset+'?\n   Were those tools developed in house, and are they publicly available?\n\n'
+            body = body + str(q) + ') What tools were used to create and publish the dataset '+dataset+'?\n   (Please designate any tools that were developed in house and whether or not they are publicly available.)\n\n'
             q = q + 1
-            body = body + str(q) + ') Did you publish any papers based on the dataset '+dataset+'?\n   Feel free to list as many as you like.\n\n'
+            body = body + str(q) + ') Did you publish any papers based on the dataset '+dataset+'?\n   Please list all pertinent papers.\n\n'
             q = q + 1
-            body = body + str(q) + ') Do you know of any applications that use dataset '+dataset+'?\n   How did you find out about them?\n\n'
+            body = body + str(q) + ') Are you aware of any applications that use the dataset '+dataset+'?\n   Please list any that you are aware of and how you found out about them.\n\n'
             q = q + 1
 
             # All publishers:
             if 'lodcloud' not in package['groups']: 
                # NOT lodcloud publishers
-               body = body + str(q) + ') Did you tag the dataset '+dataset+' as "lod" with an interest for it to become part of the LOD Cloud Diagram (http://lod-cloud.net)?\n\n'
+               body = body + str(q) + ') Did you tag the dataset '+dataset+' as "lod" to facilitate the inclusion in the LOD Cloud Diagram (http://lod-cloud.net)?\n\n'
                q = q + 1
-               body = body + str(q) + ") Did you try to fulfill the lodcloud group's metadata requirements for the dataset "+dataset+"?\n   (http://www.w3.org/wiki/TaskForces/CommunityProjects/LinkingOpenData/DataSets/CKANmetainformation)\n   If so, how easy was it on a scale from 1 (very difficult) to 10 (very easy)?\n\n"
+               body = body + str(q) + ") Did you try to fulfill the lodcloud group's metadata requirements for the dataset "+dataset+"?\n   (http://www.w3.org/wiki/TaskForces/CommunityProjects/LinkingOpenData/DataSets/CKANmetainformation)\n   If so, how difficult was it on a scale from 1 (very easy) to 10 (very difficult)?\n\n"
                q = q + 1
-               body = body + str(q) + ") Did you use the lodcloud validator (http://validator.lod-cloud.net/validate.php) to help fulfill\n   the lodcloud group's metadata requirements for dataset "+dataset+"?\n   If so, how helpful was it on a scale from 1 (unhelpful) to 10 (very helpful)?\n\n"
+               body = body + str(q) + ") Did you use the lodcloud validator (http://validator.lod-cloud.net/validate.php) to help fulfill\n   the lodcloud group's metadata requirements for dataset "+dataset+"?\n   If so, how helpful was it on a scale from 1 (not helpful) to 10 (very helpful)?\n\n"
                q = q + 1
 
             else:
@@ -238,10 +238,10 @@ class LODTagAndLODCloudGroupContacts(faqt.CKANReader):
 
             # All publishers:
             sp = ' ' if q > 9 else ''
-            body = body + str(q) + ') Is the dataset '+dataset+' still being maintained?\n   '+sp+'If not, why not? (e.g., project funding ended, original objective was achieved, lost interest, etc.)\n\n'
+            body = body + str(q) + ') Is the dataset '+dataset+' still being maintained?\n   '+sp+'If it is not, please explain why. (e.g., project funding ended, original objective was achieved, lost interest, etc.)\n\n'
             q = q + 1
             sp = ' ' if q > 9 else ''
-            body = body + str(q) + ') On a scale from 1 (most difficult) to 10 (very easy), how easy do you think it would be\n'+sp+'   for another expert developer to reproduce the Linked Data in dataset '+dataset+'?\n\n'
+            body = body + str(q) + ') On a scale from 1 (most easy) to 10 (very difficult), how difficult do you think it would be\n'+sp+'   for another expert developer to reproduce the Linked Data in dataset '+dataset+'?\n\n'
             q = q + 1
             sp = ' ' if q > 9 else ''
             body = body + str(q) + ') What factors would make it easy or difficult to reproduce the dataset '+dataset+'?\n  '+sp+' (e.g., availability of the original data, provenance available within the Linked Data itself,\n'+sp+'   domain expertise, thoroughness of documentation, or the tools that were used).\n\n'
@@ -254,12 +254,12 @@ class LODTagAndLODCloudGroupContacts(faqt.CKANReader):
 My name is Tim Lebo and I'm conducting a survey about Linked Data datasets on datahub.io.
 I'm contacting you because you are listed as an author or maintainer of the dataset '''+ckan_uri+'''.
 
-Would you be willing to answer the following '''+str(q)+''' questions?
+Could you please take a few moments to answer the following '''+str(q)+''' questions?
 For your convenience, you can just reply directly to this email.
 
 I'm planning to release the survey results with a CC Zero license [1] at [2].
 I won't include your email, and I'll associate your responses to the dataset (not you).
-If that is a problem, could you let me know?
+If this raises concerns for you, please let me know.
 
 Thanks so much for your consideration.
 
