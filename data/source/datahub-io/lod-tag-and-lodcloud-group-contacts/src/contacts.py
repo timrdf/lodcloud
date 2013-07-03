@@ -180,6 +180,7 @@ class LODTagAndLODCloudGroupContacts(faqt.CKANReader):
                   print '  contact RECOVERED ' + ", ".join(recovered_emails[dataset])
                   directory = directory + '/is-contactable-by-recovery'
                   for contact in recovered_emails[dataset]:
+                     contacts.append(contact)
                      mbox = Thing('mailto:'+contact)
                      ckanR.foaf_mbox.append(mbox)
                else:
