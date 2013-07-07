@@ -14,7 +14,7 @@
 	<key>BackgroundGraphic</key>
 	<dict>
 		<key>Bounds</key>
-		<string>{{0, 0}, {1378, 893}}</string>
+		<string>{{0, 0}, {1176, 588}}</string>
 		<key>Class</key>
 		<string>SolidGraphic</string>
 		<key>ID</key>
@@ -38,7 +38,7 @@
 	<key>CanvasOrigin</key>
 	<string>{0, 0}</string>
 	<key>CanvasSize</key>
-	<string>{1378, 893}</string>
+	<string>{1176, 588}</string>
 	<key>ColumnAlign</key>
 	<integer>1</integer>
 	<key>ColumnSpacing</key>
@@ -220,7 +220,7 @@ source data}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{821.70252878720135, 242.64341344746606}, {32, 29}}</string>
+			<string>{{821.88422867345685, 243.11342349911104}, {32, 29}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -290,8 +290,8 @@ source data}</string>
 			<integer>48</integer>
 			<key>Points</key>
 			<array>
-				<string>{765.04506353982947, 296.60844111825588}</string>
-				<string>{904.56103738794059, 220.82817890174462}</string>
+				<string>{765.42571543150427, 296.61013322361447}</string>
+				<string>{904.55966407834262, 221.72912938508597}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -500,8 +500,8 @@ source data}</string>
 			<integer>43</integer>
 			<key>Points</key>
 			<array>
-				<string>{825.01536664171692, 124.07042561355958}</string>
-				<string>{904.50761190430603, 138.74796392007806}</string>
+				<string>{825.01577710661866, 123.56915860187672}</string>
+				<string>{904.50783215209867, 137.87066423803805}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -604,7 +604,7 @@ source data}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{839.32444497099186, 47.934622821300195}, {29, 29}}</string>
+			<string>{{839.24791167869705, 47.95572286948471}, {29, 29}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -676,7 +676,7 @@ source data}</string>
 			<array>
 				<string>{825.0193386534994, 59.963397350105815}</string>
 				<string>{863, 65}</string>
-				<string>{904.57207673326434, 90.124034241714114}</string>
+				<string>{904.56973431346466, 89.607486045035529}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -1114,7 +1114,7 @@ source data}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{903.25, 319}, {226.5, 44.654388427734375}}</string>
+			<string>{{903.25, 319}, {233.00000000000006, 44.654388427734375}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -1173,7 +1173,7 @@ source data}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{903.25, 378.21336364746094}, {226.5, 44.654388427734375}}</string>
+			<string>{{903.25, 378.21336364746094}, {233.00000000000006, 44.654388427734375}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -1558,7 +1558,7 @@ source data}</string>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{905, 57}, {226.5, 203.65029907226562}}</string>
+			<string>{{905, 57}, {233, 203.65029907226562}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -1609,7 +1609,7 @@ source data}</string>
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 
-\f0\fs32 \cf0 responded to survey (94)}</string>
+\f0\fs32 \cf0 responded to survey (94 +295)}</string>
 			</dict>
 			<key>TextPlacement</key>
 			<integer>0</integer>
@@ -2061,8 +2061,8 @@ Of 890 datasets tagged \'93lod" on datahub.io}</string>
 			<integer>9</integer>
 			<key>Points</key>
 			<array>
-				<string>{825.01908855916463, 185.36317107733083}</string>
-				<string>{904.50467885431931, 174.49621208977086}</string>
+				<string>{825.01915118995794, 185.46328484935538}</string>
+				<string>{904.50452407156058, 174.67143674045667}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -2209,8 +2209,8 @@ Of 890 datasets tagged \'93lod" on datahub.io}</string>
 			<integer>26</integer>
 			<key>Points</key>
 			<array>
-				<string>{534.64712544043573, 162.0699210805833}</string>
-				<string>{904.50001124779669, 159.58836909633067}</string>
+				<string>{534.64712556386553, 162.07149537794854}</string>
+				<string>{904.50001112436689, 159.60524985635152}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -2327,7 +2327,7 @@ Of 890 datasets tagged \'93lod" on datahub.io}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2013-07-07 23:22:03 +0000</string>
+	<string>2013-07-07 23:24:07 +0000</string>
 	<key>Modifier</key>
 	<string>lebot</string>
 	<key>NotesVisible</key>
@@ -2395,7 +2395,7 @@ Of 890 datasets tagged \'93lod" on datahub.io}</string>
 	<key>UseEntirePage</key>
 	<false/>
 	<key>VPages</key>
-	<integer>2</integer>
+	<integer>1</integer>
 	<key>WindowInfo</key>
 	<dict>
 		<key>CurrentSheet</key>
@@ -2408,7 +2408,7 @@ Of 890 datasets tagged \'93lod" on datahub.io}</string>
 			</dict>
 		</array>
 		<key>Frame</key>
-		<string>{{1, 42}, {1375, 986}}</string>
+		<string>{{1, 347}, {1173, 681}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -2420,7 +2420,7 @@ Of 890 datasets tagged \'93lod" on datahub.io}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{2, 1}, {1375, 892}}</string>
+		<string>{{2, 1}, {1173, 587}}</string>
 		<key>Zoom</key>
 		<real>1</real>
 		<key>ZoomValues</key>
