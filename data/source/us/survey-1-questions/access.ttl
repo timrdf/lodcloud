@@ -4,21 +4,21 @@
 @prefix void:       <http://rdfs.org/ns/void#> .
 @prefix prov:       <http://www.w3.org/ns/prov#> .
 @prefix datafaqs:   <http://purl.org/twc/vocab/datafaqs#> .
-@prefix :           <http://datafaqstest.tw.rpi.edu/id/> .
+@prefix :           <http://purl.org/twc/lodcloud/id/> .
 
-<http://datafaqstest.tw.rpi.edu/source/us/dataset/survey-1-questions>
+<http://purl.org/twc/lodcloud/source/us/dataset/survey-1-questions>
    a void:Dataset, dcat:Dataset;
    conversion:source_identifier  "us";
    conversion:dataset_identifier "survey-1-questions";
-   prov:wasDerivedFrom :download_5837726d-f819-4ac6-8080-b32a1d2491f7;
+   prov:wasDerivedFrom :download_276c0f4b-3f3e-4662-9014-d7f0bb5ac858;
 .
 
-:download_5837726d-f819-4ac6-8080-b32a1d2491f7
+:download_276c0f4b-3f3e-4662-9014-d7f0bb5ac858
    a dcat:Distribution;
    dcat:downloadURL <https://docs.google.com/spreadsheet/ccc?key=0ArTeDpS4-nUDdHVmSHFKSEt5ZXBObDItdGFjVGs2OEE#gid=0>;
 .
 
-<dataset/5837726d-f819-4ac6-8080-b32a1d2491f7>
+<dataset/276c0f4b-3f3e-4662-9014-d7f0bb5ac858>
    a dcat:Dataset;
-   dcat:distribution :download_5837726d-f819-4ac6-8080-b32a1d2491f7;
+   dcat:distribution :download_276c0f4b-3f3e-4662-9014-d7f0bb5ac858;
 .
