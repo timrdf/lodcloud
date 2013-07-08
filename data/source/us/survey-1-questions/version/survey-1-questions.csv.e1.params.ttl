@@ -72,53 +72,45 @@
       #conversion:delimits_cell "|";   # pipe
       #conversion:delimits_cell ",";   # comma
 
-      #conversion:interpret [
-      #   conversion:symbol        "";
-      #   conversion:interpretation conversion:null; 
-      #];
-      #conversion:enhance [
-      #   conversion:domain_template "thing_[r]";
-      #   conversion:domain_name     "Thing";
-      #];
-      #conversion:enhance [
-      #   conversion:class_name "Thing";
-      #   conversion:subclass_of <http://purl.org/...>;
-      #];
+      conversion:interpret [
+         conversion:symbol        "-";
+         conversion:interpretation conversion:null; 
+      ];
+      conversion:enhance [
+         conversion:domain_template "[/sd][#1]";
+         conversion:domain_name     "Question";
+      ];
+      conversion:enhance [
+         conversion:class_name "Question";
+         conversion:subclass_of pml:Question;
+      ];
       conversion:enhance [
          ov:csvCol          1;
-         ov:csvHeader       "";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "";
-         #conversion:equivalent_property dcterms:identifier;
+         ov:csvHeader       "question name";
+         conversion:equivalent_property dcterms:identifier;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
+         conversion:range   rdfs:Literal;
       ];
       conversion:enhance [
          ov:csvCol          2;
-         ov:csvHeader       "";
-         #conversion:bundled_by [ ov:csvCol 1 ];
+         ov:csvHeader       "lod tag text";
          #conversion:label   "";
-         #conversion:equivalent_property dcterms:identifier;
+         conversion:equivalent_property skos:altLabel;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
          #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
+         conversion:range   rdfs:Literal;
          #conversion:range_name  "Thing";
       ];
       conversion:enhance [
          ov:csvCol          3;
-         ov:csvHeader       "";
-         #conversion:bundled_by [ ov:csvCol 1 ];
+         ov:csvHeader       "lodcloud text";
          #conversion:label   "";
-         #conversion:equivalent_property dcterms:identifier;
+         conversion:equivalent_property skos:altLabel;
          #conversion:subproperty_of      dcterms:identifier;
          conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
+         conversion:range   rdfs:Literal;
       ];
       #conversion:enhance [            
       #   ov:csvRow 3,4,5;             
