@@ -35,7 +35,7 @@
 @prefix foaf:          <http://xmlns.com/foaf/0.1/> .
 @prefix ov:            <http://open.vocab.org/terms/> .
 @prefix conversion:    <http://purl.org/twc/vocab/conversion/> .
-@prefix :              <http://datafaqstest.tw.rpi.edu/source/us/dataset/survey-1-questions/version/2013-Jul-08/params/enhancement/1/> .
+@prefix :              <http://purl.org/twc/lodcloud/source/us/dataset/survey-1-questions/version/2013-Jul-08/params/enhancement/1/> .
 
 
 #:a_bundle
@@ -45,10 +45,10 @@
 #   #conversion:type_name     "My Class";   # Can also be a URI, e.g. foaf:Person.
 #.
 
-<http://datafaqstest.tw.rpi.edu/source/us/dataset/survey-1-questions/version/2013-Jul-08/conversion/enhancement/1>
+<http://purl.org/twc/lodcloud/source/us/dataset/survey-1-questions/version/2013-Jul-08/conversion/enhancement/1>
    a conversion:LayerDataset, void:Dataset;
 
-   conversion:base_uri           "http://datafaqstest.tw.rpi.edu"^^xsd:anyURI;
+   conversion:base_uri           "http://purl.org/twc/lodcloud"^^xsd:anyURI;
    conversion:source_identifier  "us";
    conversion:dataset_identifier "survey-1-questions";
    conversion:version_identifier "2013-Jul-08";
