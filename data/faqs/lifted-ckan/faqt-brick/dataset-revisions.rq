@@ -1,0 +1,17 @@
+prefix void:     <http://rdfs.org/ns/void#>
+prefix datafaqs: <http://purl.org/twc/vocab/datafaqs#>
+prefix prov:       <http://www.w3.org/ns/prov#>
+prefix dcterms:    <http://purl.org/dc/terms/>
+
+
+select ?dataset ?revision ?created ?agent ?description
+where {
+   ?dataset                    # <http://datahub.io/dataset/2000-us-census-rdf>
+      a datafaqs:CKANDataset;
+      prov:wasDerivedFrom ?revision;
+   .
+   ?revision
+    dcterms:created      ?created;
+    dcterms:description  ?description;
+    prov:wasAttributedTo ?agent .
+}
