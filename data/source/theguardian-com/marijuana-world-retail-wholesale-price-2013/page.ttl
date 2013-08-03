@@ -1,0 +1,11 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix conversion: <http://purl.org/twc/vocab/conversion/> .
+@prefix dcat:       <http://www.w3.org/ns/dcat#> .
+@prefix void:       <http://rdfs.org/ns/void#> .
+@prefix prov:       <http://www.w3.org/ns/prov#> .
+@prefix datafaqs:   <http://purl.org/twc/vocab/datafaqs#> .
+@prefix :           <http://datafaqstest.tw.rpi.edu/id/> .
+
+<http://datafaqstest.tw.rpi.edu/source/theguardian-com/dataset/marijuana-world-retail-wholesale-price-2013>
+   foaf:page <http://www.theguardian.com/news/datablog/interactive/2013/aug/02/marijuana-world-retail-wholesale-price-interactive-map>;
+.
