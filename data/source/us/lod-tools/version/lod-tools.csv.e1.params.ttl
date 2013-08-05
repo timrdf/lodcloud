@@ -45,12 +45,12 @@
    sioc:account_of  <http://tw.rpi.edu/instances/TimLebo>;
 .
 
-#:a_bundle
-#   a conversion:ImplicitBundle;
-#   conversion:property_name "a_property"; # Can also be a URI, e.g. dcterms:title.
-#   conversion:name_template "[/sd]company/[#2]/[r]";
-#   #conversion:type_name     "My Class";   # Can also be a URI, e.g. foaf:Person.
-#.
+:repository_bundle
+   a conversion:ImplicitBundle;
+   conversion:property_name doap:repository;
+   conversion:name_template "[/]id/tool/[#1]/repository";
+   conversion:type_name     doap:Repository;
+.
 
 <http://purl.org/twc/lodcloud/source/us/dataset/lod-tools/version/2013-Aug-05/conversion/enhancement/1>
    a conversion:LayerDataset, void:Dataset;
@@ -66,7 +66,7 @@
       conversion:enhancement_identifier "1";
 
       dcterms:creator <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
-      dcterms:created "2013-08-05T14:28:21-04:00"^^xsd:dateTime;
+      dcterms:created "2013-08-05T14:29:51-04:00"^^xsd:dateTime;
 
 
       #conversion:enhance [
@@ -79,53 +79,49 @@
       #conversion:delimits_cell "|";   # pipe
       #conversion:delimits_cell ",";   # comma
 
-      #conversion:interpret [
-      #   conversion:symbol        "";
-      #   conversion:interpretation conversion:null; 
-      #];
-      #conversion:enhance [
-      #   conversion:domain_template "thing_[r]";
-      #   conversion:domain_name     "Thing";
-      #];
+      conversion:interpret [
+         conversion:symbol        "";
+         conversion:interpretation conversion:null; 
+      ];
+      conversion:enhance [
+         conversion:domain_template "[/]id/tool/[#1]";
+         conversion:domain_name     doap:Software;
+      ];
       #conversion:enhance [
       #   conversion:class_name "Thing";
       #   conversion:subclass_of <http://purl.org/...>;
       #];
       conversion:enhance [
          ov:csvCol          1;
-         ov:csvHeader       "";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
+         ov:csvHeader       "Tool name";
+         #conversion:label   "Tool name";
+         conversion:equivalent_property dcterms:identifier;
+         conversion:subproperty_of      rdfs:label;
          conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
+         conversion:range   rdfs:Literal;
       ];
       conversion:enhance [
          ov:csvCol          2;
-         ov:csvHeader       "";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
+         ov:csvHeader       "SW Wiki page";
+         #conversion:label   "SW Wiki page";
+         conversion:equivalent_property foaf:page;
          conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
+         conversion:range   rdfs:Resource;
+         rdfs:comment "http://www.w3.org/2001/sw/wiki/Umls2rdf -> http://www.w3.org/2001/sw/wiki/Special:ExportRDF/Umls2rdf";
+         conversion:object_search [
+            conversion:regex     "(http://www.w3.org/2001/sw/wiki/)([^/]+)$";
+            conversion:predicate prov:specializationOf;
+            conversion:object    "[\\1]Special:ExportRDF/[\\2]";
+         ];
       ];
       conversion:enhance [
          ov:csvCol          3;
-         ov:csvHeader       "";
-         #conversion:bundled_by [ ov:csvCol 1 ];
-         #conversion:label   "";
-         #conversion:equivalent_property dcterms:identifier;
-         #conversion:subproperty_of      dcterms:identifier;
+         ov:csvHeader       "Repository";
+         conversion:bundled_by :repository_bundle;
+         #conversion:label   "Repository";
+         conversion:equivalent_property doap:location;
          conversion:comment "";
-         #conversion:range_template  "[/sd]thing[.]";
-         conversion:range   todo:Literal;
-         #conversion:range_name  "Thing";
+         conversion:range   rdfs:Resource;
       ];
       #conversion:enhance [            
       #   ov:csvRow 3,4,5;             
