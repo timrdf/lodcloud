@@ -1,0 +1,24 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix conversion: <http://purl.org/twc/vocab/conversion/> .
+@prefix dcat:       <http://www.w3.org/ns/dcat#> .
+@prefix void:       <http://rdfs.org/ns/void#> .
+@prefix prov:       <http://www.w3.org/ns/prov#> .
+@prefix datafaqs:   <http://purl.org/twc/vocab/datafaqs#> .
+@prefix :           <http://datafaqstest.tw.rpi.edu/id/> .
+
+<http://datafaqstest.tw.rpi.edu/source/us/dataset/lod-tools>
+   a void:Dataset, dcat:Dataset;
+   conversion:source_identifier  "us";
+   conversion:dataset_identifier "lod-tools";
+   prov:wasDerivedFrom :download_305d1507-f88b-4c62-b79c-6b44f7faa831;
+.
+
+:download_305d1507-f88b-4c62-b79c-6b44f7faa831
+   a dcat:Distribution;
+   dcat:downloadURL <https://docs.google.com/spreadsheet/ccc?key=0ArTeDpS4-nUDdGdCYUh0SzZZMGMwTDZWeW1rZkdyLUE#gid=0>;
+.
+
+<dataset/305d1507-f88b-4c62-b79c-6b44f7faa831>
+   a dcat:Dataset;
+   dcat:distribution :download_305d1507-f88b-4c62-b79c-6b44f7faa831;
+.
