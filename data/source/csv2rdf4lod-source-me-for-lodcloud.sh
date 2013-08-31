@@ -105,6 +105,7 @@ export CSV2RDF4LOD_CONVERTER=""
 #
 export CSV2RDF4LOD_BASE_URI="http://logd.tw.rpi.edu"
 export CSV2RDF4LOD_BASE_URI="http://datafaqstest.tw.rpi.edu"
+export CSV2RDF4LOD_BASE_URI="http://purl.org/twc/lodcloud"
 
 #
 # Customize: A base URI to use in place of CSV2RDF4LOD_BASE_URI

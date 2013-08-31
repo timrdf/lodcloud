@@ -1,0 +1,24 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix conversion: <http://purl.org/twc/vocab/conversion/> .
+@prefix dcat:       <http://www.w3.org/ns/dcat#> .
+@prefix void:       <http://rdfs.org/ns/void#> .
+@prefix prov:       <http://www.w3.org/ns/prov#> .
+@prefix datafaqs:   <http://purl.org/twc/vocab/datafaqs#> .
+@prefix :           <http://datafaqstest.tw.rpi.edu/id/> .
+
+<http://datafaqstest.tw.rpi.edu/source/mkbergman-com/dataset/sweet-tools>
+   a void:Dataset, dcat:Dataset;
+   conversion:source_identifier  "mkbergman-com";
+   conversion:dataset_identifier "sweet-tools";
+   prov:wasDerivedFrom :download_12bd3018-33a4-47f9-84af-9ffeca6c81b4;
+.
+
+:download_12bd3018-33a4-47f9-84af-9ffeca6c81b4
+   a dcat:Distribution;
+   dcat:downloadURL <http://mkbergman.com/SweetTools/Sweet_Tools_v_180.n3>;
+.
+
+<dataset/12bd3018-33a4-47f9-84af-9ffeca6c81b4>
+   a dcat:Dataset;
+   dcat:distribution :download_12bd3018-33a4-47f9-84af-9ffeca6c81b4;
+.
