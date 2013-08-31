@@ -4,21 +4,21 @@
 @prefix void:       <http://rdfs.org/ns/void#> .
 @prefix prov:       <http://www.w3.org/ns/prov#> .
 @prefix datafaqs:   <http://purl.org/twc/vocab/datafaqs#> .
-@prefix :           <http://datafaqstest.tw.rpi.edu/id/> .
+@prefix :           <http://purl.org/twc/lodcloud/id/> .
 
-<http://datafaqstest.tw.rpi.edu/source/mkbergman-com/dataset/sweet-tools>
+<http://purl.org/twc/lodcloud/source/mkbergman-com/dataset/sweet-tools>
    a void:Dataset, dcat:Dataset;
    conversion:source_identifier  "mkbergman-com";
    conversion:dataset_identifier "sweet-tools";
-   prov:wasDerivedFrom :download_12bd3018-33a4-47f9-84af-9ffeca6c81b4;
+   prov:wasDerivedFrom :download_03ebc54c-f763-4a5c-a79a-d15b861defff;
 .
 
-:download_12bd3018-33a4-47f9-84af-9ffeca6c81b4
+:download_03ebc54c-f763-4a5c-a79a-d15b861defff
    a dcat:Distribution;
    dcat:downloadURL <http://mkbergman.com/SweetTools/Sweet_Tools_v_180.n3>;
 .
 
-<dataset/12bd3018-33a4-47f9-84af-9ffeca6c81b4>
+<dataset/03ebc54c-f763-4a5c-a79a-d15b861defff>
    a dcat:Dataset;
-   dcat:distribution :download_12bd3018-33a4-47f9-84af-9ffeca6c81b4;
+   dcat:distribution :download_03ebc54c-f763-4a5c-a79a-d15b861defff;
 .
