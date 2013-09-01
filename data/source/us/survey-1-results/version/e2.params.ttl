@@ -1,0 +1,278 @@
+@prefix rdf:           <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix todo:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:           <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:           <http://www.w3.org/2002/07/owl#> .
+@prefix vann:          <http://purl.org/vocab/vann/> .
+@prefix skos:          <http://www.w3.org/2004/02/skos/core#> .
+@prefix time:          <http://www.w3.org/2006/time#> .
+@prefix wgs:           <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix geonames:      <http://www.geonames.org/ontology#> .
+@prefix geonamesid:    <http://sws.geonames.org/> .
+@prefix govtrackusgov: <http://www.rdfabout.com/rdf/usgov/geo/us/> .
+@prefix dbpedia:       <http://dbpedia.org/resource/> .
+@prefix dbpediaprop:   <http://dbpedia.org/property/> .
+@prefix dbpediaowl:    <http://dbpedia.org/ontology/> .
+@prefix con:           <http://www.w3.org/2000/10/swap/pim/contact#> .
+@prefix muo:           <http://purl.oclc.org/NET/muo/muo#> .
+@prefix vs:            <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix frbr:          <http://purl.org/vocab/frbr/core#> .
+@prefix bibo:          <http://purl.org/ontology/bibo/> .
+@prefix prov:          <http://www.w3.org/ns/prov#> .
+@prefix doap:          <http://usefulinc.com/ns/doap#> .
+@prefix nfo:           <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix sio:           <http://semanticscience.org/resource/> .
+@prefix org:           <http://www.w3.org/ns/org#> .
+@prefix vsr:           <http://purl.org/twc/vocab/vsr#> .
+@prefix dcat:          <http://www.w3.org/ns/dcat#> .
+@prefix qb:            <http://purl.org/linked-data/cube#> .
+@prefix pml:           <http://provenanceweb.org/ns/pml#> .
+@prefix dgtwc:         <http://data-gov.tw.rpi.edu/2009/data-gov-twc.rdf#> .
+@prefix dcterms:       <http://purl.org/dc/terms/> .
+@prefix void:          <http://rdfs.org/ns/void#> .
+@prefix scovo:         <http://purl.org/NET/scovo#> .
+@prefix sioc:          <http://rdfs.org/sioc/ns#> .
+@prefix foaf:          <http://xmlns.com/foaf/0.1/> .
+@prefix ov:            <http://open.vocab.org/terms/> .
+@prefix conversion:    <http://purl.org/twc/vocab/conversion/> .
+@prefix datafaqs:      <http://purl.org/twc/vocab/datafaqs#> .
+@prefix :              <http://purl.org/twc/lodcloud/source/us/dataset/survey-1-results/version/2013-Jul-07/params/enhancement/2> .
+
+<http://tw.rpi.edu/instances/TimLebo> foaf:holdsAccount <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot> .
+<http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>
+   a foaf:OnlineAccount;
+   foaf:accountName "lebot";
+   dcterms:isPartOf <http://purl.org/twc/id/machine/lebot/MacBookPro6_2>;
+   sioc:account_of  <http://tw.rpi.edu/instances/TimLebo>;
+.
+
+:dataset_bundle
+   a conversion:ImplicitBundle;
+   conversion:property_name dcterms:subject; # Can also be a URI, e.g. dcterms:title.
+   conversion:name_template "[/sd][.]";
+   conversion:type_name     void:Dataset;   # Can also be a URI, e.g. foaf:Person.
+.
+
+<http://purl.org/twc/lodcloud/source/us/dataset/survey-1-results/version/2013-Jul-07/conversion/enhancement/2>
+   a conversion:LayerDataset, void:Dataset;
+
+   conversion:base_uri           "http://purl.org/twc/lodcloud"^^xsd:anyURI;
+   conversion:source_identifier  "us";
+   conversion:dataset_identifier "survey-1-results";
+   conversion:version_identifier "2013-Jul-07";
+      conversion:enhancement_identifier "2";
+
+   conversion:conversion_process [
+      a conversion:EnhancementConversionProcess;
+      conversion:enhancement_identifier "2";
+
+      dcterms:creator <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
+      dcterms:created "2013-07-07T19:46:53-04:00"^^xsd:dateTime;
+
+
+      #conversion:enhance [
+      #   ov:csvRow 2;
+      #   a conversion:DataStartRow;
+      #];
+
+      conversion:delimits_cell ",";
+      #conversion:delimits_cell "	"; # tab
+      #conversion:delimits_cell "|";   # pipe
+      #conversion:delimits_cell ",";   # comma
+
+      conversion:interpret [
+         conversion:symbol        "-", "";
+         conversion:interpretation conversion:null; 
+      ];
+      conversion:enhance [
+         conversion:fromCol 6; conversion:toCol 20;
+         a qb:Observation;
+         conversion:domain_template "[/sd][#1]/[H]";
+         conversion:domain_name     "Answer";
+
+         conversion:equivalent_property prov:wasDerivedFrom;
+         conversion:object "[/s]survey-1-questions/[H]";
+         conversion:range   pml:Question; # TODO: this isn't typing the header.
+      ];
+      conversion:enhance [
+         conversion:class_name "Answer";
+         conversion:subclass_of pml:Answer;
+      ];
+      conversion:enhance [
+         ov:csvCol          1;
+         ov:csvHeader       "dataset id";
+         conversion:bundled_by :dataset_bundle;
+         conversion:equivalent_property prov:specializationOf;
+         conversion:range_template     "http://datahub.io/dataset/[.]";
+         conversion:range               void:Dataset;
+      ];
+      conversion:enhance [
+         ov:csvCol          2;
+         ov:csvHeader       "distributed as";
+         conversion:bundled_by [ ov:csvCol 1 ];
+         conversion:equivalent_property rdf:type;
+         conversion:range_template     "[/sd]vocab/[^.-]Dataset";
+         conversion:range               rdfs:Resource;
+      ];
+      conversion:enhance [
+         ov:csvCol          3;
+         ov:csvHeader       "send status";
+         conversion:bundled_by [ ov:csvCol 1 ];
+         conversion:equivalent_property rdf:type;
+         conversion:comment "";
+         conversion:range_template  "[/sd]vocab/[^.-]";
+         conversion:range   owl:Class;
+      ];
+      conversion:enhance [
+         ov:csvCol          4, 5;
+         conversion:eg "7/4/2013";
+         conversion:delimits_object ",\\s*";
+         conversion:pattern "M/d/YYYY";
+         conversion:range   xsd:date;
+      ];
+      conversion:enhance [
+         ov:csvCol          4;
+         ov:csvHeader       "response date(s)";
+         conversion:bundled_by [ ov:csvCol 1 ];
+         conversion:label   "Responded On";
+         conversion:subproperty_of dcterms:modified;
+         conversion:comment "";
+      ];
+      conversion:enhance [
+         ov:csvCol          5;
+         ov:csvHeader       "resent date(s)";
+         conversion:bundled_by [ ov:csvCol 1 ];
+         conversion:label   "Resent On";
+         conversion:subproperty_of dcterms:modified;
+         conversion:comment "";
+         conversion:interpret [
+            conversion:symbol        "NA", "";
+            conversion:interpretation conversion:null; 
+         ];
+      ];
+      conversion:enhance [
+         ov:csvCol 6, 7, 9, 14, 17, 20;
+         conversion:object_search [
+            conversion:regex     "^\\[yes\\].*$", "^[Yy]es.*$";
+            conversion:predicate prov:value;
+            conversion:object    true;
+         ];
+         conversion:object_search [
+            conversion:regex     "^\\[no\\].*$";
+            conversion:predicate prov:value;
+            conversion:object    false;
+         ];
+      ];
+      conversion:enhance [
+         ov:csvCol 4, 5, 15, 16, 18;
+         conversion:object_search [
+            conversion:regex     "^\\[(.)\\].*$";
+            conversion:predicate prov:value;
+            conversion:object    "xsd:integer([\\1])";
+         ];
+      ];
+      conversion:enhance [
+         ov:csvCol          6;
+         ov:csvHeader       "forward results";
+      ];
+      conversion:enhance [
+         ov:csvCol          7;
+         ov:csvHeader       "publish permission";
+         conversion:interpret [
+            conversion:symbol        "do not publish", "no", "";
+            conversion:interpretation conversion:null; 
+         ];
+         a conversion:Only_if_column;
+      ];
+      conversion:enhance [
+         ov:csvCol          8;
+         ov:csvHeader       "responser's general comments";
+         conversion:bundled_by :dataset_bundle;
+         conversion:equivalent_property dcterms:description;
+         conversion:range   rdfs:Literal;
+      ];
+      conversion:enhance [
+         ov:csvCol          9;
+         ov:csvHeader       "lod 1 (tag)";
+         conversion:interpret [
+            conversion:symbol        "omitted";
+            conversion:interpretation conversion:null; 
+         ];
+         a conversion:Only_if_column;
+      ];
+      conversion:enhance [
+         ov:csvCol          10;
+         ov:csvHeader       "lod 2 (org type)";
+         conversion:object_search [                      # [Tabels, D2R Server, Jena, Virtuoso]
+            conversion:regex     "^\\[([^,\\]]+)[,\\]]",
+                                 "[^\\]]+?, ([^,\\]]+),",
+                                 "^[^\\]]+, ([^,\\]]+)\\]", "^(academic)$";
+            conversion:predicate dcterms:yippie;
+            conversion:object    "[/sd]org/[\\1]";
+         ];
+      ];
+      conversion:enhance [
+         ov:csvCol          11;
+         ov:csvHeader       "lod 3 (tools)";
+         conversion:eg "[Tabels, D2R Server, Jena, Virtuoso]";
+         conversion:enhance [
+            ov:csvCol          11;
+            conversion:interpret [
+               conversion:regex "^\\[", "\\][\\d\\D]*";
+               conversion:interpretation "";
+            ];
+            conversion:delimits_object ",\\s*";
+            conversion:equivalent_property dcterms:references;
+            conversion:range doap:Software;
+            conversion:range_template "[/sd]tool/[.]";
+            a conversion:DirectSameAsEnhancement;
+            conversion:links_via <../../../../lod-tools/version/2013-Aug-05/automatic/lod-tools.csv.e1.ttl>; 
+                                         # e.g. "Protege" 
+                                         #         -> http://purl.org/twc/lodcloud/source/us/dataset/survey-1-results/tool/Protege
+                                         #            -> http://purl.org/twc/lodcloud/id/tool/Protege
+         ];
+      ];
+      conversion:enhance [
+         ov:csvCol          12;
+         ov:csvHeader       "lod 4 (papers)";
+      ];
+      conversion:enhance [
+         ov:csvCol          13;
+         ov:csvHeader       "lod 5 (apps)";
+      ];
+      conversion:enhance [
+         ov:csvCol          14;
+         ov:csvHeader       "lod 6 (to diagram)";
+      ];
+      conversion:enhance [
+         ov:csvCol          15;
+         ov:csvHeader       "lod 7 (difficulty lodcloud reqs)";
+      ];
+      conversion:enhance [
+         ov:csvCol          16;
+         ov:csvHeader       "lod 8 (validator)";
+      ];
+      conversion:enhance [
+         ov:csvCol          17;
+         ov:csvHeader       "lod 9 (maintained)";
+      ];
+      conversion:enhance [
+         ov:csvCol          18;
+         ov:csvHeader       "lod 10 (reproduce rating)";
+      ];
+      conversion:enhance [
+         ov:csvCol          19;
+         ov:csvHeader       "lod 11 (reproduce factors)";
+      ];
+      conversion:enhance [
+         ov:csvCol          20;
+         ov:csvHeader       "lod 12 (another diagram)";
+      ];
+      conversion:enhance [            
+         ov:csvRow 59;             
+         a conversion:ExampleResource;
+      ];                              
+   ];
+.
+
+rdf:value conversion:equivalent_property dcterms:description .
