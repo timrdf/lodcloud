@@ -80,8 +80,13 @@
       #conversion:delimits_cell ",";   # comma
 
       conversion:interpret [
-         conversion:symbol        "";
+         conversion:symbol        "", "DNE aug 31 2013";
          conversion:interpretation conversion:null; 
+      ];
+      conversion:interpret [
+         conversion:fromRow 3; conversion:toRow 6;
+         conversion:regex        "DNE.*"; # TODO: not working
+         conversion:interpretation ""; 
       ];
       conversion:enhance [
          conversion:domain_template "[/]id/tool/[#1]";
@@ -102,6 +107,30 @@
       ];
       conversion:enhance [
          ov:csvCol          2;
+         ov:csvHeader       "Alt Labels";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         conversion:equivalent_property skos:altLabel;
+         conversion:delimits_object ",\\s*";
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   rdfs:Literal;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          3;
+         ov:csvHeader       "Homepage";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Homepage";
+         conversion:equivalent_property foaf:homepage;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   rdfs:Resource;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          4;
          ov:csvHeader       "SW Wiki page";
          #conversion:label   "SW Wiki page";
          conversion:equivalent_property foaf:page;
@@ -110,18 +139,30 @@
          rdfs:comment "http://www.w3.org/2001/sw/wiki/Umls2rdf -> http://www.w3.org/2001/sw/wiki/Special:ExportRDF/Umls2rdf";
          conversion:object_search [
             conversion:regex     "(http://www.w3.org/2001/sw/wiki/)([^/]+)$";
-            conversion:predicate prov:specializationOf;
+            conversion:equivalent_property prov:alternateOf;
             conversion:object    "[\\1]Special:ExportRDF/[\\2]";
          ];
       ];
       conversion:enhance [
-         ov:csvCol          3;
+         ov:csvCol          5;
          ov:csvHeader       "Repository";
          conversion:bundled_by :repository_bundle;
          #conversion:label   "Repository";
          conversion:equivalent_property doap:location;
          conversion:comment "";
          conversion:range   rdfs:Resource;
+      ];
+      conversion:enhance [
+         ov:csvCol          6;
+         ov:csvHeader       "Bergman Sweet Tools";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Bergman Sweet Tools";
+         conversion:equivalent_property prov:alternateOf;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   rdfs:Resource;
+         #conversion:range_name  "Thing";
       ];
       #conversion:enhance [            
       #   ov:csvRow 3,4,5;             
