@@ -4,6 +4,7 @@
 #3>     <https://github.com/timrdf/csv2rdf4lod-automation/wiki/Script:-source-me.sh> .
 
 source /home/lodcloud/prizms/lodcloud/data/source/csv2rdf4lod-source-me-for-lodcloud.sh
+source /home/lodcloud/prizms/lodcloud/data/source/csv2rdf4lod-source-me-on-lodcloud.sh
 source /home/lodcloud/prizms/lodcloud/data/source/csv2rdf4lod-source-me-credentials.sh
 export CSV2RDF4LOD_CONVERT_DATA_ROOT="/home/lodcloud/prizms/lodcloud/data/source"
 export CSV2RDF4LOD_PUBLISH_VARWWW_DUMP_FILES="true"
