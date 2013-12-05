@@ -832,7 +832,7 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SCRIPT_PATH=""
 # (done in pvload.sh)
 #
 export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SPARQL_ENDPOINT="http://logd.tw.rpi.edu/sparql"
-export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SPARQL_ENDPOINT="http://datafaqstest.tw.rpi.edu/sparql"
+export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SPARQL_ENDPOINT="http://purl.org/twc/lodcloud/sparql"
 
 
 #
@@ -847,7 +847,7 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SPARQL_ENDPOINT="http://datafaqstest.tw.rpi.
 # (done in populate-to-endpoint.sh)
 #
 export CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT="http://logd.tw.rpi.edu/sparql" 
-export CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT="http://datafaqstest.tw.rpi.edu/sparql"
+export CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT="http://purl.org/twc/lodcloud/sparql"
 
 #
 # Customize: Directory where SPARQL query files exist 
@@ -965,6 +965,7 @@ export DG_RETRIEVAL_CONVERT_RAW="true"
 export DG_RETRIEVAL_CONVERT_RAW="false" 
 
 # End of CSV2RDF4LOD_ variables
-export DATAFAQS_BASE_URI="http://datafaqstest.tw.rpi.edu"
+export DATAFAQS_BASE_URI="http://purl.org/twc/lodcloud"
 export DATAFAQS_PROVENANCE_CODE_RAW_BASE="https://raw.github.com/timrdf/DataFAQs/master"
 export DATAFAQS_PROVENANCE_CODE_PAGE_BASE="https://github.com/timrdf/DataFAQs/blob/master"
+export CSV2RDF4LOD_PUBLISH_VC_REPOSITORY="git@github.com:timrdf/lodcloud.git"
