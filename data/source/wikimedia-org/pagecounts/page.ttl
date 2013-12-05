@@ -9,3 +9,7 @@
 <http://purl.org/twc/lodcloud/source/wikimedia-org/dataset/pagecounts>
    foaf:page <http://dumps.wikimedia.org/other/pagecounts-raw/>;
 .
+
+<http://purl.org/twc/lodcloud/source/wikimedia-org/dataset/pagecounts>
+   foaf:page <http://blog.databaseanimals.com/wikipedia-pagelinks-in-amazon-s3>;
+.
