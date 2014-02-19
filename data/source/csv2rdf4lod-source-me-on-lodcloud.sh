@@ -11,5 +11,5 @@
 #export CSV2RDF4LOD_CONVERT_DATA_ROOT="/srv/twc-healthdata/data/source"
 #export CSV2RDF4LOD_PUBLISH_VARWWW_ROOT="/var/www"
 #export CSV2RDF4LOD_PUBLISH_LOD_MATERIALIZATION_WWW_ROOT="$CSV2RDF4LOD_PUBLISH_VARWWW_ROOT"
-export CSV2RDF4LOD_PUBLISH_VIRTUOSO_INI_PATH="/var/lib/virtuoso/db/virtuoso.ini"
-export CSV2RDF4LOD_PUBLISH_VIRTUOSO_ISQL_PATH="/usr/bin/isql-v"
+export CSV2RDF4LOD_PUBLISH_VIRTUOSO_INI_PATH="/usr/local/var/lib/virtuoso/db/virtuoso.ini"
+export CSV2RDF4LOD_PUBLISH_VIRTUOSO_ISQL_PATH="/usr/local/bin/isql-v"
