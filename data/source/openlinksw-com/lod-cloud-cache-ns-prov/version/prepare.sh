@@ -28,26 +28,29 @@ if [[ "$1" == "clean" ]]; then
    exit
 fi
 
-echo "Term,Term Type,Count,Query,Query DateTime" > manual/classes.csv
-echo "Term,Term Type,Count,Query,Query DateTime" > manual/properties.csv
+echo "Term,Local Name,Term Type,Count,Query,Query DateTime" > manual/classes.csv
+echo "Term,Local Name,Term Type,Count,Query,Query DateTime" > manual/properties.csv
 
 for rq in `find manual -name "*.rq"`; do
    rq_base=`basename $rq`
+   pmap='java edu.rpi.tw.string.pmm.DefaultPrefixMappings'
    echo $rq
 
    term=`cat $rq | sed 's/^.*<//;s/>.*$//'`                                                               # http://www.w3.org/ns/prov#Entity
-   termtype=`basename $rq | sed 's/_.*$//'`                                                               # class
+   localname=`$pmap demo $term | grep bestLocalNameFor: | awk '{print $2}'`                               # Entity
+   termtype=`basename $rq | sed 's/_.*$//'`                                                               # class 
    count=`tail -1 source/$rq_base.csv`                                                                    # 33
    query=`grep prov:wasQuotedFrom source/$rq_base.csv.prov.ttl | awk '{print $2}' | sed 's/<//;s/>.*$//'` # http://lod.openlinksw.com/sparql?query=select%20coun...
    date=`grep dcterms:date source/$rq_base.csv.prov.ttl | awk '{print $2}' | sed 's/^"//;s/".*$//'`       # 2014-02-20T16:43:35+00:00
    echo "  $term"
+   echo "  $localname"
    echo "  $termtype"
    echo "  $count"
    echo "  $query"
    echo "  $date"
    if [[ "$termtype" == "class" ]]; then
-      echo "$term,$termtype,$count,$query,$date" >> manual/classes.csv
+      echo "$term,$localname,$termtype,$count,$query,$date" >> manual/classes.csv
    elif [[ "$termtype" == "property" ]]; then
-      echo "$term,$termtype,$count,$query,$date" >> manual/properties.csv
+      echo "$term,$localname,$termtype,$count,$query,$date" >> manual/properties.csv
    fi
 done
