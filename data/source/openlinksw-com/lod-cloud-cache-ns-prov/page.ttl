@@ -1,0 +1,11 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix conversion: <http://purl.org/twc/vocab/conversion/> .
+@prefix dcat:       <http://www.w3.org/ns/dcat#> .
+@prefix void:       <http://rdfs.org/ns/void#> .
+@prefix prov:       <http://www.w3.org/ns/prov#> .
+@prefix datafaqs:   <http://purl.org/twc/vocab/datafaqs#> .
+@prefix :           <http://purl.org/twc/lodcloud/id/> .
+
+<http://purl.org/twc/lodcloud/source/openlinksw-com/dataset/lod-cloud-cache-ns-prov>
+   foaf:page <https://github.com/timrdf/lodcloud/wiki/Dataset-openlinksw-com-lod-cloud-cache-ns-prov>;
+.
