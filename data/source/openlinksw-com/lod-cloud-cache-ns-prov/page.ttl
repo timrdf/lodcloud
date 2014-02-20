@@ -9,3 +9,7 @@
 <http://purl.org/twc/lodcloud/source/openlinksw-com/dataset/lod-cloud-cache-ns-prov>
    foaf:page <https://github.com/timrdf/lodcloud/wiki/Dataset-openlinksw-com-lod-cloud-cache-ns-prov>;
 .
+
+<http://purl.org/twc/lodcloud/source/openlinksw-com/dataset/lod-cloud-cache-ns-prov>
+   foaf:page <http://lists.w3.org/Archives/Public/public-lod/2013May/0154.html>;
+.
