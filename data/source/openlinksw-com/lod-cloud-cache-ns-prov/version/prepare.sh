@@ -54,3 +54,8 @@ for rq in `find manual -name "*.rq"`; do
       echo "$term,$localname,$termtype,$count,$query,$date" >> manual/properties.csv
    fi
 done
+
+if [[ ! -e convert-lod-cloud-cache-ns-prov.sh ]]; then
+   cr-create-conversion-trigger.sh -w manual/classes.csv manual/properties.csv
+   echo convert-lod-cloud-cache-ns-prov.sh
+fi
