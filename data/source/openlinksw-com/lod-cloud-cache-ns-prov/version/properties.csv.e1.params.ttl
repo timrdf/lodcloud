@@ -86,6 +86,11 @@
       #   conversion:subclass_of <http://purl.org/...>;
       #];
       conversion:enhance [
+         a conversion:SubjectAnnotation;
+         conversion:predicate  prov:specializationOf;
+         conversion:object     <http://datahub.io/dataset/openlink-lod-cache>;
+      ];
+      conversion:enhance [
          ov:csvCol          1, 2, 3, 4, 5, 6;
          conversion:bundled_by :partition_bundle;
       ];
