@@ -159,6 +159,16 @@ if [[ ! -d $version || ! -d $version/source || `find $version -empty -type d -na
          find . -newer now -name "*.csv" | xargs cat
          sleep 10
       done
+      mkdir -p materialized
+      for rq in `find ../manual -name "*.rq"`; do 
+         # ../manual/property_qualifiedEnd.rq
+         # property_qualifiedEnd.rq.csv
+         csv=`basename $rq`.csv
+         count=`tail -1 $csv`
+         if [[ "$count" =~ [0-9]+ && $count -gt 0 ]]; then
+            cache-queries.sh 'http://lod.openlinksw.com/sparql' -o csv -q $rq --limit-offset 100000 --nap 5 --strip-count -od materialized
+         fi
+      done
       rm now
       # - - - - - - - - - - - - - - - - - - - - Replace above for custom retrieval - - - -/
    popd &> /dev/null
