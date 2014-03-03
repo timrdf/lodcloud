@@ -153,7 +153,7 @@ if [[ ! -d $version || ! -d $version/source || `find $version -empty -type d -na
          # e.g. '../manual/class_Generation.rq'
          echo $rq
          term=`echo $rq | sed 's/^.*<//;s/>.*$//'`
-         echo $term
+         echo "Submitting query for $term"
          touch now
          cache-queries.sh 'http://lod.openlinksw.com/sparql' -o csv -q $rq -od .
          find . -newer now -name "*.csv" | xargs cat
