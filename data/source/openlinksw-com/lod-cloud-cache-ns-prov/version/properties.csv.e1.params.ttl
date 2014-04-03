@@ -1,0 +1,177 @@
+@prefix rdf:           <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix todo:          <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:           <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:           <http://www.w3.org/2002/07/owl#> .
+@prefix vann:          <http://purl.org/vocab/vann/> .
+@prefix skos:          <http://www.w3.org/2004/02/skos/core#> .
+@prefix time:          <http://www.w3.org/2006/time#> .
+@prefix wgs:           <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix geonames:      <http://www.geonames.org/ontology#> .
+@prefix geonamesid:    <http://sws.geonames.org/> .
+@prefix govtrackusgov: <http://www.rdfabout.com/rdf/usgov/geo/us/> .
+@prefix dbpedia:       <http://dbpedia.org/resource/> .
+@prefix dbpediaprop:   <http://dbpedia.org/property/> .
+@prefix dbpediaowl:    <http://dbpedia.org/ontology/> .
+@prefix con:           <http://www.w3.org/2000/10/swap/pim/contact#> .
+@prefix muo:           <http://purl.oclc.org/NET/muo/muo#> .
+@prefix vs:            <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix frbr:          <http://purl.org/vocab/frbr/core#> .
+@prefix bibo:          <http://purl.org/ontology/bibo/> .
+@prefix prov:          <http://www.w3.org/ns/prov#> .
+@prefix doap:          <http://usefulinc.com/ns/doap#> .
+@prefix nfo:           <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix sio:           <http://semanticscience.org/resource/> .
+@prefix org:           <http://www.w3.org/ns/org#> .
+@prefix vsr:           <http://purl.org/twc/vocab/vsr#> .
+@prefix dcat:          <http://www.w3.org/ns/dcat#> .
+@prefix qb:            <http://purl.org/linked-data/cube#> .
+@prefix pml:           <http://provenanceweb.org/ns/pml#> .
+@prefix dgtwc:         <http://data-gov.tw.rpi.edu/2009/data-gov-twc.rdf#> .
+@prefix dcterms:       <http://purl.org/dc/terms/> .
+@prefix void:          <http://rdfs.org/ns/void#> .
+@prefix scovo:         <http://purl.org/NET/scovo#> .
+@prefix sioc:          <http://rdfs.org/sioc/ns#> .
+@prefix foaf:          <http://xmlns.com/foaf/0.1/> .
+@prefix ov:            <http://open.vocab.org/terms/> .
+@prefix conversion:    <http://purl.org/twc/vocab/conversion/> .
+@prefix :              <http://purl.org/twc/lodcloud/source/openlinksw-com/dataset/lod-cloud-cache-ns-prov/version/2014-Feb-20/params/enhancement/1/> .
+
+
+:partition_bundle
+   a conversion:ImplicitBundle;
+   conversion:property_name void:propertyPartition;
+   conversion:name_template "[/sdv][#2]";
+   conversion:type_name     void:Dataset;
+.
+
+<http://purl.org/twc/lodcloud/source/openlinksw-com/dataset/lod-cloud-cache-ns-prov/version/2014-Feb-20/conversion/enhancement/1>
+   a conversion:LayerDataset, void:Dataset;
+
+   conversion:base_uri           "http://purl.org/twc/lodcloud"^^xsd:anyURI;
+   conversion:source_identifier  "openlinksw-com";
+   conversion:dataset_identifier "lod-cloud-cache-ns-prov";
+   conversion:version_identifier "2014-Feb-20";
+   conversion:enhancement_identifier "1";
+
+   conversion:conversion_process [
+      a conversion:EnhancementConversionProcess;
+      conversion:enhancement_identifier "1";
+      conversion:subject_discriminator  "properties";
+
+      dcterms:creator [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+      dcterms:created "2014-02-20T18:00:42+00:00"^^xsd:dateTime;
+
+
+      #conversion:enhance [
+      #   ov:csvRow 2;
+      #   a conversion:DataStartRow;
+      #];
+
+      conversion:delimits_cell ",";
+      #conversion:delimits_cell "	"; # tab
+      #conversion:delimits_cell "|";   # pipe
+      #conversion:delimits_cell ",";   # comma
+
+      #conversion:interpret [
+      #   conversion:symbol        "";
+      #   conversion:interpretation conversion:null; 
+      #];
+      conversion:enhance [
+         conversion:domain_template "[/sd][v]";
+         #conversion:domain_name     "Thing";
+      ];
+      #conversion:enhance [
+      #   conversion:class_name "Thing";
+      #   conversion:subclass_of <http://purl.org/...>;
+      #];
+      conversion:enhance [
+         a conversion:SubjectAnnotation;
+         conversion:predicate  prov:specializationOf;
+         conversion:object     <http://datahub.io/dataset/openlink-lod-cache>;
+      ];
+      conversion:enhance [
+         ov:csvCol          1, 2, 3, 4, 5, 6;
+         conversion:bundled_by :partition_bundle;
+      ];
+      conversion:enhance [
+         ov:csvCol          1;
+         ov:csvHeader       "Term";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Term";
+         conversion:equivalent_property void:property;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   rdfs:Resource;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          2;
+         ov:csvHeader       "Local Name";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Local Name";
+         conversion:equivalent_property rdfs:label;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         conversion:range   rdfs:Literal;
+      ];
+      conversion:enhance [
+         ov:csvCol          3;
+         ov:csvHeader       "Term Type";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Term Type";
+         conversion:equivalent_property rdf:type;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         conversion:interpret [
+            conversion:symbol        "class";
+            conversion:interpretation rdfs:Class; 
+         ];
+         conversion:interpret [
+            conversion:symbol        "property";
+            conversion:interpretation rdf:Property; 
+         ];
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   rdfs:Resource;
+         #conversion:range_name  "Thing";
+      ];
+      conversion:enhance [
+         ov:csvCol          4;
+         ov:csvHeader       "Count";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Count";
+         conversion:equivalent_property void:distinctSubjects;
+         conversion:subproperty_of      sio:count;
+         conversion:comment "";
+         conversion:range   xsd:integer;
+      ];
+      conversion:enhance [
+         ov:csvCol          5;
+         ov:csvHeader       "Query";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Query";
+         conversion:equivalent_property prov:wasDerivedFrom;
+         #conversion:subproperty_of      dcterms:identifier;
+         conversion:comment "";
+         #conversion:range_template  "[/sd]thing[.]";
+         conversion:range   pml:Query;
+      ];
+      conversion:enhance [
+         ov:csvCol          6;
+         ov:csvHeader       "Query DateTime";
+         #conversion:bundled_by [ ov:csvCol 1 ];
+         #conversion:label   "Query DateTime";
+         conversion:equivalent_property prov:generatedAtTime;
+         conversion:subproperty_of      dcterms:created;
+         conversion:comment "";
+         conversion:range   xsd:dateTime;
+      ];
+      #conversion:enhance [
+      #   ov:csvRow 3,4,5;
+      #   conversion:fromRow 3;
+      #   conversion:toRow   5;
+      #   a conversion:ExampleResource;
+      #];
+   ];
+.
