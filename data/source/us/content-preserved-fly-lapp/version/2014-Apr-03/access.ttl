@@ -1,0 +1,27 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix conversion: <http://purl.org/twc/vocab/conversion/> .
+@prefix dcat:       <http://www.w3.org/ns/dcat#> .
+@prefix void:       <http://rdfs.org/ns/void#> .
+@prefix nfo:        <http://www.semanticdesktop.org/ontologies/nfo/#> .
+@prefix prov:       <http://www.w3.org/ns/prov#> .
+@prefix datafaqs:   <http://purl.org/twc/vocab/datafaqs#> .
+@prefix :           <http://purl.org/twc/lodcloud/id/> .
+@base               <http://purl.org/twc/lodcloud/id/> .
+
+<http://purl.org/twc/lodcloud/source/us/dataset/content-preserved-fly-lapp/version/2014-Apr-03>
+   a void:Dataset, dcat:Dataset;
+   conversion:source_identifier  "us";
+   conversion:dataset_identifier "content-preserved-fly-lapp";
+   conversion:identifier         "b4fb7e8e762907d9028e85604f2aadb5";
+   prov:wasDerivedFrom <distribution/9ec82e44ecfb55d1752d90286b1d2384>;
+.
+
+<distribution/9ec82e44ecfb55d1752d90286b1d2384>
+   a dcat:Distribution;
+   dcat:downloadURL <http://dbpedia.org/resource/Fly>;
+.
+
+<dataset/9ec82e44ecfb55d1752d90286b1d2384>
+   a dcat:Dataset;
+   dcat:distribution <distribution/9ec82e44ecfb55d1752d90286b1d2384>;
+.

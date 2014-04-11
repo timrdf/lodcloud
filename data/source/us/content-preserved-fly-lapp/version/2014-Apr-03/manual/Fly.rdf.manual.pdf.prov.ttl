@@ -1,0 +1,86 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix sioc:       <http://rdfs.org/sioc/ns#> .
+@prefix pmlp:       <http://inference-web.org/2.0/pml-provenance.owl#> .
+@prefix oboro:      <http://obofoundry.org/ro/ro.owl#> .
+@prefix oprov:      <http://openprovenance.org/ontology#> .
+@prefix hartigprov: <http://purl.org/net/provenance/ns#> .
+@prefix nfo:        <http://www.semanticdesktop.org/ontologies/nfo/#> .
+@prefix pmlj:       <http://inference-web.org/2.0/pml-justification.owl#> .
+@prefix conv:       <http://purl.org/twc/vocab/conversion/> .
+@prefix irw: <http://www.ontologydesignpatterns.org/ont/web/irw.owl#> .
+
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix sioc:    <http://rdfs.org/sioc/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
+
+<Fly.rdf.manual.pdf>
+   a pmlp:Information, prov:Entity;
+   pmlp:hasModificationDateTime "2014-04-03T10:40:19-04:00"^^xsd:dateTime;
+.
+<Fly.rdf.manual.pdf>
+   a nfo:FileDataObject;
+   nfo:fileName "Fly.rdf.manual.pdf";
+   nfo:hasHash <md5_733568576ea1f6af1169ac5393465bcc_time_1396536034>;
+.
+<md5_733568576ea1f6af1169ac5393465bcc_time_1396536034>
+   a nfo:FileHash; 
+   dcterms:date      "2014-04-03T10:40:34-04:00"^^xsd:dateTime;
+   nfo:hashAlgorithm "md5";
+   nfo:hashValue     "733568576ea1f6af1169ac5393465bcc";
+.
+
+<../manual/Fly.rdf.manual.graffle>
+   a pmlp:Information, prov:Entity;
+   pmlp:hasModificationDateTime "2014-04-03T10:40:34-04:00"^^xsd:dateTime;
+.
+<Fly.rdf.manual.pdf> prov:wasDerivedFrom <../manual/Fly.rdf.manual.graffle> .
+<../manual/Fly.rdf.manual.graffle>
+   a nfo:FileDataObject;
+   nfo:fileName "../manual/Fly.rdf.manual.graffle";
+   nfo:hasHash <md5_c673100a28fb88faae486933c66bbdfd_time_1396536034>;
+.
+<md5_c673100a28fb88faae486933c66bbdfd_time_1396536034>
+   a nfo:FileHash; 
+   dcterms:date      "2014-04-03T10:40:34-04:00"^^xsd:dateTime;
+   nfo:hashAlgorithm "md5";
+   nfo:hashValue     "c673100a28fb88faae486933c66bbdfd";
+.
+
+<nodeSetaaf536f5-f4af-473b-baad-6ce7a8b892a6>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <Fly.rdf.manual.pdf>;
+   pmlj:isConsequentOf <inferenceStepaaf536f5-f4af-473b-baad-6ce7a8b892a6>;
+.
+<inferenceStepaaf536f5-f4af-473b-baad-6ce7a8b892a6>
+   a pmlj:InferenceStep;
+   pmlj:hasIndex 0;
+   rdfs:seeAlso <nodeSetaaf536f5-f4af-473b-baad-6ce7a8b892a6_antecedent>;
+#   pmlj:hasAntecedentList ( <nodeSetaaf536f5-f4af-473b-baad-6ce7a8b892a6_antecedent> );
+   pmlj:hasInferenceEngine <manual_layoutaaf536f5-f4af-473b-baad-6ce7a8b892a6>;
+   pmlj:hasInferenceRule   conv:manual_layout_Method;
+   oboro:has_agent          [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+   hartigprov:involvedActor [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+.
+
+<wasControlledaaf536f5-f4af-473b-baad-6ce7a8b892a6>
+   a oprov:WasControlledBy;
+   oprov:cause  [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+   oprov:effect <inferenceStepaaf536f5-f4af-473b-baad-6ce7a8b892a6>;
+   oprov:endTime "2014-04-03T10:40:34-04:00"^^xsd:dateTime;
+.
+<nodeSetaaf536f5-f4af-473b-baad-6ce7a8b892a6_antecedent>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <../manual/Fly.rdf.manual.graffle>;
+.
+
+<manual_layoutaaf536f5-f4af-473b-baad-6ce7a8b892a6>
+   a pmlp:InferenceEngine, conv:Manual_layout_Engine, prov:Entity;
+   dcterms:identifier "manual_layoutaaf536f5-f4af-473b-baad-6ce7a8b892a6";
+.
+
+conv:Manual_layout_Engine rdfs:subClassOf pmlp:InferenceEngine .

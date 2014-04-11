@@ -374,7 +374,7 @@ export CSV2RDF4LOD_PUBLISH_PURGE_AUTODIR="false"
 # (done in cr-publish-void-to-endpoint.sh)
 #
 export CSV2RDF4LOD_PUBLISH_OUR_SOURCE_ID="twc-rpi-edu"
-export CSV2RDF4LOD_PUBLISH_OUR_SOURCE_ID="us"
+export CSV2RDF4LOD_PUBLISH_OUR_SOURCE_ID="tw-rpi-edu"
 
 #
 # Customize: Specify the "base" conversion_identifier
@@ -878,7 +878,7 @@ export CSV2RDF4LOD_PUBLISH_DATAHUB_METADATA="true"
 # (done in bin/secondary/cr-linksets.sh)
 #
 export CSV2RDF4LOD_PUBLISH_DATAHUB_METADATA_OUR_BUBBLE_ID="twc-logd" 
-export CSV2RDF4LOD_PUBLISH_DATAHUB_METADATA_OUR_BUBBLE_ID="datafaqs"
+export CSV2RDF4LOD_PUBLISH_DATAHUB_METADATA_OUR_BUBBLE_ID="the-living-lod-cloud"
 
 #
 # Customize: Notify Ping The Semantic Web about all published datasets.
