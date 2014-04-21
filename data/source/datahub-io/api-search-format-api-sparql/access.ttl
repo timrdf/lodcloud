@@ -1,0 +1,27 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix conversion: <http://purl.org/twc/vocab/conversion/> .
+@prefix dcat:       <http://www.w3.org/ns/dcat#> .
+@prefix void:       <http://rdfs.org/ns/void#> .
+@prefix nfo:        <http://www.semanticdesktop.org/ontologies/nfo/#> .
+@prefix prov:       <http://www.w3.org/ns/prov#> .
+@prefix datafaqs:   <http://purl.org/twc/vocab/datafaqs#> .
+@prefix :           <http://purl.org/twc/lodcloud/id/> .
+@base               <http://purl.org/twc/lodcloud/id/> .
+
+<http://purl.org/twc/lodcloud/source/datahub-io/dataset/api-search-format-api-sparql>
+   a void:Dataset, dcat:Dataset;
+   conversion:source_identifier  "datahub-io";
+   conversion:dataset_identifier "api-search-format-api-sparql";
+   conversion:identifier         "4ea0068887f2d2c515eb8d142f3bd814";
+   prov:wasDerivedFrom <distribution/07bffc805ddfc9e1fc593a520e0c2f2d>;
+.
+
+<distribution/07bffc805ddfc9e1fc593a520e0c2f2d>
+   a dcat:Distribution;
+   dcat:downloadURL <http://datahub.io/api/2/search/resource?format=api/sparql&all_fields=1&limit=10000>;
+.
+
+<dataset/07bffc805ddfc9e1fc593a520e0c2f2d>
+   a dcat:Dataset;
+   dcat:distribution <distribution/07bffc805ddfc9e1fc593a520e0c2f2d>;
+.
