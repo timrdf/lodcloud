@@ -63,6 +63,7 @@
                     group-by="month-from-dateTime(xs:dateTime(rq:binding[@name='created']))">
          <xsl:variable name="month" select="current-grouping-key()"/>
          <xsl:value-of select="concat($LT,$sdvp,'/',$year,'/',$month,$GT,' a qb:Observation;',$NL,
+                                      '   ',$LT,'group',$GT,' ',$LT,$sdv,'/',$cr-portion-id,$GT,';',$NL,
                                       '   ',$LT,'year',$GT,' ',$year,';',$NL,
                                       '   ',$LT,'month',$GT,' ',$month,';',$NL,
                                       '   sio:count ',count(current-group()),';',$NL)"/>
