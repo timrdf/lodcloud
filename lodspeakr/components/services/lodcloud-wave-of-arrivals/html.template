@@ -1,0 +1,17 @@
+{%include "../../includes/header.inc"%}
+    <div class="container-fluid">
+    <h1>LOD Cloud dataset listings added in each month</h1>
+   <!-- ?group ?year ?month ?count ?obs -->
+   <table>
+    {% for row in main %}
+        <tr><td>{{row.group.uri}}</td>
+            <td>{{row.year}}</td>
+            <td>{{row.month}}</td>
+            <td>{{row.count}}</td>
+            <td>{{row.obs.uri}}</td>
+        </tr>
+    {% endfor %}
+   </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+prefix qb:   <http://purl.org/linked-data/cube#>
+prefix sio:  <http://semanticscience.org/resource/>
+prefix wave: <http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/vocab/>
+
+select distinct ?group ?year ?month ?count ?obs
+where {
+  graph <http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24> { 
+    ?obs a qb:Observation;
+     wave:group ?group; # http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag
+     wave:year  ?year;
+     wave:month ?month;
+     sio:count  ?count .
+  }
+}
+order by ?group ?year ?month
