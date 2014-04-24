@@ -1,0 +1,20 @@
+PREFIX datafaqs: <http://purl.org/twc/vocab/datafaqs#>
+PREFIX prov:     <http://www.w3.org/ns/prov#>
+PREFIX dcterms:  <http://purl.org/dc/terms/>
+select ?dataset (min(?modified) as ?created)
+where {
+ GRAPH <http://purl.org/twc/lodcloud/source/us/dataset/lod-tag/version/2014-04-07> { 
+   ?dataset                    # <http://datahub.io/dataset/2000-us-census-rdf>
+      a datafaqs:CKANDataset;
+      prov:wasDerivedFrom ?revision
+   .
+   ?revision
+    dcterms:created      ?modified .
+ }
+ GRAPH <http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group/version/2014-Apr-22> {
+   <http://datahub.io/group/lodcloud> a datafaqs:DatasetCollection;
+     dcterms:hasPart ?dataset .
+ }
+}
+group by ?dataset
+order by ?created
