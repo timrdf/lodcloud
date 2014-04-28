@@ -1,0 +1,88 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix sioc:       <http://rdfs.org/sioc/ns#> .
+@prefix pmlp:       <http://inference-web.org/2.0/pml-provenance.owl#> .
+@prefix oboro:      <http://obofoundry.org/ro/ro.owl#> .
+@prefix oprov:      <http://openprovenance.org/ontology#> .
+@prefix hartigprov: <http://purl.org/net/provenance/ns#> .
+@prefix nfo:        <http://www.semanticdesktop.org/ontologies/nfo/#> .
+@prefix pmlj:       <http://inference-web.org/2.0/pml-justification.owl#> .
+@prefix conv:       <http://purl.org/twc/vocab/conversion/> .
+@prefix irw: <http://www.ontologydesignpatterns.org/ont/web/irw.owl#> .
+
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix sioc:    <http://rdfs.org/sioc/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
+<http://purl.org/twc/id/machine/lebot/MacBookPro6_2>
+   a prov:Entity;
+.
+<http://tw.rpi.edu/instances/TimLebo>
+  a prov:Agent, foaf:Agent;
+  foaf:holdsAccount <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
+.
+<http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>
+   a foaf:OnlineAccount, prov:Agent;
+   foaf:accountName "lebot";
+   dcterms:isPartOf <http://purl.org/twc/id/machine/lebot/MacBookPro6_2>;
+   sioc:account_of      <http://tw.rpi.edu/instances/TimLebo>;
+   prov:actedOnBehalfOf <http://tw.rpi.edu/instances/TimLebo>;
+.
+
+<000-CONTENTS>
+   a pmlp:Information, prov:Entity;
+   pmlp:hasModificationDateTime "2014-04-24T15:36:36-04:00"^^xsd:dateTime;
+.
+<000-CONTENTS>
+   a nfo:FileDataObject;
+   nfo:fileName "000-CONTENTS";
+   nfo:hasHash <md5_6cad1d243a30acf9577ad55b021b8957_time_1398368201>;
+.
+<md5_6cad1d243a30acf9577ad55b021b8957_time_1398368201>
+   a nfo:FileHash; 
+   dcterms:date      "2014-04-24T15:36:41-04:00"^^xsd:dateTime;
+   nfo:hashAlgorithm "md5";
+   nfo:hashValue     "6cad1d243a30acf9577ad55b021b8957";
+.
+
+<000-CONTENTS> prov:wasDerivedFrom <http://data.sindice.com/trec2011/resources/sindice-de/full/000-CONTENTS> .
+<http://data.sindice.com/trec2011/resources/sindice-de/full/000-CONTENTS>
+   a sioc:Item, irw:WebResource, prov:Entity;
+.
+
+<nodeSetd42b6b81-b40d-4024-8f05-e469029f5e8e>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <000-CONTENTS>;
+   pmlj:isConsequentOf <inferenceStepd42b6b81-b40d-4024-8f05-e469029f5e8e>;
+.
+<inferenceStepd42b6b81-b40d-4024-8f05-e469029f5e8e>
+   a pmlj:InferenceStep;
+   pmlj:hasIndex 0;
+   rdfs:seeAlso <nodeSetd42b6b81-b40d-4024-8f05-e469029f5e8e_antecedent>;
+#   pmlj:hasAntecedentList ( <nodeSetd42b6b81-b40d-4024-8f05-e469029f5e8e_antecedent> );
+   pmlj:hasInferenceEngine <downloadd42b6b81-b40d-4024-8f05-e469029f5e8e>;
+   pmlj:hasInferenceRule   conv:download_Method;
+   oboro:has_agent          <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
+   hartigprov:involvedActor <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
+.
+
+<wasControlledd42b6b81-b40d-4024-8f05-e469029f5e8e>
+   a oprov:WasControlledBy;
+   oprov:cause  <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
+   oprov:effect <inferenceStepd42b6b81-b40d-4024-8f05-e469029f5e8e>;
+   oprov:endTime "2014-04-24T15:36:41-04:00"^^xsd:dateTime;
+.
+<nodeSetd42b6b81-b40d-4024-8f05-e469029f5e8e_antecedent>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <http://data.sindice.com/trec2011/resources/sindice-de/full/000-CONTENTS>;
+.
+
+<downloadd42b6b81-b40d-4024-8f05-e469029f5e8e>
+   a pmlp:InferenceEngine, conv:Download_Engine, prov:Entity;
+   dcterms:identifier "downloadd42b6b81-b40d-4024-8f05-e469029f5e8e";
+.
+
+conv:Download_Engine rdfs:subClassOf pmlp:InferenceEngine .

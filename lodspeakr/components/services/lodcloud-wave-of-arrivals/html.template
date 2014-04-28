@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>LOD Cloud Wave of Arrivals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="{{lodspk.home}}css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="alternate" type="application/rdf+xml" title="RDF/XML Version" href="{{lodspk.local.value}}.rdf" />
+    <link rel="alternate" type="text/turtle" title="Turtle Version" href="{{lodspk.local.value}}.ttl" />
+    <link rel="alternate" type="text/plain" title="N-Triples Version" href="{{lodspk.local.value}}.nt" />
+    <link rel="alternate" type="application/json" title="RDFJSON Version" href="{{lodspk.local.value}}.json" />
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+      .wait{
+        background-image:url('{{lodspk.home}}img/wait.gif');
+        background-repeat:no-repeat;
+        padding-right:20px;
+        background-position: right;
+      }
+    </style>
+    <link href="{{lodspk.home}}css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <script type="text/javascript" src="js/d3.v3.js"></script>
+    <script type="text/javascript" src="{{lodspk.home}}js/jquery.js"></script>
+    <script type="text/javascript" src="{{lodspk.home}}js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{lodspk.home}}js/bootstrap-typeahead.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.typeahead').typeahead({
+            source: function (typeahead, query) {
+              $('.typeahead').addClass('wait');[]
+              return $.get('{{lodspk.home}}search/'+encodeURIComponent(query), { }, function (data) {
+                  $('.typeahead').removeClass('wait');[]
+                  return typeahead.process(data);
+              }, 'json');
+            },
+            onselect: function (obj) {
+              $('.typeahead').attr('disabled', true);
+              window.location = obj.uri;
+            }
+        });
+    });
+    </script>
+  </head>
+  <body>
+
+   <div class="chart"></div>
+   <div class="cpg"></div>
+   <script type="text/javascript">
+var data = [4, 8];
+
+var x = d3.scale.linear()
+    .domain([0, d3.max(data)])
+    .range([0, 420]);
+
+d3.select(".chart")
+  .selectAll("div")
+    .data(data)
+  .enter().append("div")
+    .style("width", function(d) { return x(d) + "px"; })
+    .text("d3 is working");
+//var data2 = [ {% for row in models.main %} {"group":"{{row.group.value}}", "year":"{{row.year.value}}", "month":"{{row.month.value}}", "count":"{{row.count.value}}", "uri":"{{row.obs.value}}"} {%if !forloop.last%},{%endif%} {% endfor %} ];
+var data2 = [  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2007", "month":"4", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2007/4"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2007", "month":"7", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2007/7"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2007", "month":"8", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2007/8"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2007", "month":"9", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2007/9"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2007", "month":"11", "count":"3", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2007/11"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2008", "month":"3", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2008/3"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2008", "month":"6", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2008/6"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2008", "month":"7", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2008/7"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2009", "month":"1", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2009/1"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2009", "month":"3", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2009/3"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2009", "month":"6", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2009/6"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2009", "month":"8", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2009/8"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2009", "month":"9", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2009/9"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2009", "month":"10", "count":"48", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2009/10"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2009", "month":"11", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2009/11"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2009", "month":"12", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2009/12"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2010", "month":"1", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2010/1"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2010", "month":"3", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2010/3"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2010", "month":"4", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2010/4"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2010", "month":"5", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2010/5"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2010", "month":"7", "count":"12", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2010/7"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2010", "month":"8", "count":"69", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2010/8"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2010", "month":"9", "count":"85", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2010/9"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2010", "month":"10", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2010/10"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2010", "month":"11", "count":"3", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2010/11"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2010", "month":"12", "count":"4", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2010/12"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2011", "month":"1", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2011/1"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2011", "month":"2", "count":"10", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2011/2"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2011", "month":"3", "count":"15", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2011/3"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2011", "month":"4", "count":"6", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2011/4"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2011", "month":"5", "count":"11", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2011/5"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2011", "month":"6", "count":"23", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2011/6"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2011", "month":"7", "count":"55", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2011/7"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2011", "month":"8", "count":"4", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2011/8"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2011", "month":"9", "count":"8", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2011/9"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2011", "month":"10", "count":"9", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2011/10"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2011", "month":"11", "count":"15", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2011/11"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2011", "month":"12", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2011/12"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2012", "month":"1", "count":"9", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2012/1"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2012", "month":"2", "count":"12", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2012/2"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2012", "month":"3", "count":"4", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2012/3"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2012", "month":"4", "count":"9", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2012/4"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2012", "month":"5", "count":"262", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2012/5"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2012", "month":"6", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2012/6"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2012", "month":"7", "count":"5", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2012/7"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2012", "month":"8", "count":"25", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2012/8"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2012", "month":"9", "count":"39", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2012/9"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2012", "month":"10", "count":"9", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2012/10"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2012", "month":"11", "count":"3", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2012/11"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2012", "month":"12", "count":"3", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2012/12"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2013", "month":"1", "count":"3", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2013/1"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2013", "month":"2", "count":"7", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2013/2"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2013", "month":"3", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2013/3"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2013", "month":"4", "count":"3", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2013/4"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2013", "month":"5", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2013/5"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2013", "month":"7", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2013/7"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2013", "month":"8", "count":"4", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2013/8"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2013", "month":"10", "count":"47", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2013/10"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2013", "month":"11", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2013/11"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2013", "month":"12", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2013/12"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2014", "month":"1", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2014/1"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2014", "month":"2", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2014/2"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag", "year":"2014", "month":"3", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lod-tag/2014/3"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2007", "month":"7", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2007/7"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2007", "month":"8", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2007/8"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2007", "month":"11", "count":"3", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2007/11"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2008", "month":"3", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2008/3"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2008", "month":"6", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2008/6"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2008", "month":"7", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2008/7"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2009", "month":"1", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2009/1"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2009", "month":"3", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2009/3"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2009", "month":"9", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2009/9"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2009", "month":"10", "count":"15", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2009/10"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2009", "month":"12", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2009/12"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2010", "month":"3", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2010/3"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2010", "month":"4", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2010/4"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2010", "month":"5", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2010/5"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2010", "month":"7", "count":"12", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2010/7"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2010", "month":"8", "count":"57", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2010/8"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2010", "month":"9", "count":"76", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2010/9"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2010", "month":"10", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2010/10"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2010", "month":"11", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2010/11"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2010", "month":"12", "count":"4", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2010/12"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2011", "month":"1", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2011/1"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2011", "month":"2", "count":"5", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2011/2"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2011", "month":"3", "count":"10", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2011/3"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2011", "month":"4", "count":"5", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2011/4"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2011", "month":"5", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2011/5"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2011", "month":"6", "count":"10", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2011/6"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2011", "month":"7", "count":"24", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2011/7"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2011", "month":"8", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2011/8"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2011", "month":"9", "count":"3", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2011/9"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2011", "month":"10", "count":"6", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2011/10"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2011", "month":"11", "count":"4", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2011/11"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2011", "month":"12", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2011/12"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2012", "month":"2", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2012/2"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2012", "month":"9", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2012/9"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2012", "month":"10", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2012/10"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2012", "month":"11", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2012/11"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2013", "month":"2", "count":"2", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2013/2"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2013", "month":"10", "count":"15", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2013/10"} ,  {"group":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group", "year":"2013", "month":"11", "count":"1", "uri":"http://purl.org/twc/lodcloud/source/us/dataset/lodcloud-wave-of-arrivals/version/2014-Apr-24/lodcloud-group/2013/11"} ];
+
+WIDTH=0
+HEIGHT=1
+SVG_DIM=[1000,400] // width, height
+
+if (!window.console) console = {};
+console.log = console.log || function(){};
+console.warn = console.warn || function(){};
+console.error = console.error || function(){};
+console.info = console.info || function(){};
+
+countLODCloud = function(d){return d.group.indexOf("lodcloud-group") > -1 ? parseInt(d.count,10) : 0};
+countLODCloudRange = [d3.min(data2, countLODCloud), d3.max(data2, countLODCloud)];
+mirror_horizon = 20 + countLODCloudRange[1];
+
+countY = function(d){return parseInt(d.count,10)};
+countRange = [d3.min(data2, countY), d3.max(data2, countY)];
+count_scale = d3.scale.linear().domain([0,countRange[1]]).range([0,SVG_DIM[HEIGHT]/2.0-5]);
+console.info('countRange: ' + countRange[0] + ' ' + countRange[1]);
+
+monthX = function(d){return parseInt(d.year,10) * 12 + parseInt(d.month,10)}; // for all-on-one-line
+//monthX = function(d){return parseInt(d.month,10)};                            // for one-year-per-line
+month_scale = d3.scale.linear().domain(
+   [d3.min(data2, monthX),
+    d3.max(data2, monthX)])
+.range([0,SVG_DIM[WIDTH]]);
+//.range([0,300]);
+
+monthY = function(d){return parseInt(d.year,10)};                             // for one-year-per-line
+yearRange = [d3.min(data2, monthY), d3.max(data2, monthY)];
+year_scale = d3.scale.linear().domain(yearRange).range([0,SVG_DIM[HEIGHT]]);
+console.info('yearRange: ' + yearRange[0] + ' ' + yearRange[1]);
+
+d3.ns.prefix['vsr']   = 'http://purl.org/twc/vocab/vsr#'; 
+d3.ns.prefix['rdf']   = 'http://www.w3.org/2000/01/rdf-schema#'; 
+d3.ns.prefix['grddl'] = 'http://www.w3.org/2003/g/data-view#';
+
+DEC=10;
+d3.json("http://lodcloud.tw.rpi.edu/lodcloud-wave-of-arrivals.json",
+        function(wave_data){
+           console.log('json!')
+           console.log(data2.length)
+           console.log(countRange[1])
+           mySVG = d3.select(".cpg").append("svg");
+           rects = mySVG.attr('height', SVG_DIM[HEIGHT])
+             .attr('xmlns:xmlns:vsr',            'http://purl.org/twc/vocab/vsr#')
+             .attr('xmlns:xmlns:grddl',          'http://www.w3.org/2003/g/data-view#')
+             .attr('xmlns:xmlns:rdf',            'http://www.w3.org/2000/01/rdf-schema#')
+             .attr('grddl:grddl:transformation', 'https://raw.github.com/timrdf/vsr/master/src/xsl/grddl/svg.xsl')
+             .selectAll("rect")
+             .data(data2)
+             .enter()
+             .append("rect") // ?group ?year ?month ?count ?obs
+             .attr("x", function(d,i) {
+                    shift = 0;//d.group.indexOf("lodcloud-group") > -1 ? -10 : 10;
+                    return shift + month_scale(parseInt(d.year,DEC) * 12 + parseInt(d.month,DEC))
+                    //return month_scale(parseInt(d.month,DEC));
+             })
+             .attr("y", function(d,i) {
+                  return d.group.indexOf("lodcloud-group") > -1 ? count_scale(mirror_horizon) - count_scale(d.count) : count_scale(mirror_horizon);
+                  //return countRange[1] - d.count;
+                  //return year_scale(parseInt(d.year,DEC));// + d.group.indexOf("lodcloud-group") > -1 ? countRange[1] - d.count : countRange[1];
+             })
+             .attr("height", function(d,i) {
+                  return count_scale(d.count);
+             }).attr("width", 10)
+             .attr("fill", function(d) { // http://colorschemedesigner.com/#3x21Tw0w0w0w0
+                  return d.group.indexOf("lodcloud-group") > -1 ? "#3F92D2" : "#FF9200";
+              })
+             .attr("stroke", "#444444").attr("stroke-width", ".5");
+          rects.append("title").text(function(d) {return d.count + ' datasets added to ' + d.group.substring(93) + ' in ' + d.month + '/' + d.year});
+          rects.append('metadata').append('vsr:vsr:depicts').attr('rdf:rdf:resource',function(d){return d.uri;});
+          mySVG.selectAll("text.label").data(data2).enter().append("text").attr('class','label')
+               .attr('y',15).text(function(d){return d.group.indexOf("lodcloud-group") == -1 && parseInt(d.month,DEC)==1 ? d.year : ''}).attr('x',function(d){return month_scale(parseInt(d.year,DEC) * 12 + parseInt(d.month,DEC));});
+        });
+
+   </script>
+
+ <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="{{lodspk.home}}">{{lodspk.title}}</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="{{lodspk.home}}">Home</a></li>
+              <li><a href="{{lodspk.home}}classes">Classes</a></li>
+              <li><a href="{{lodspk.home}}namedGraphs">Named Graphs</a></li>
+            </ul>
+            <form class="navbar-search pull-left" action="">
+              <input type="text" data-provide="typeahead" class="typeahead search-query span2" placeholder="Search"/>
+            </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+<!-- header.inc. -->
+
+    <div class="container-fluid">
+    <h1>LOD Cloud dataset listings added in each month</h1>
+   <!-- ?group ?year ?month ?count ?obs -->
+   <table>
+    {% for row in models.main %}
+        <tr><td>{{row.group.value}}</td>
+            <td>{{row.year.value}}</td>
+            <td>{{row.month.value}}</td>
+            <td>{{row.count.value}}</td>
+            <td>{{row.obs.value}}</td>
+        </tr>
+    {% endfor %}
+   </table>
+    </div>
+  </body>
+</html>
+
