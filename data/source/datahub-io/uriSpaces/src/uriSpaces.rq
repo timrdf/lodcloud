@@ -1,0 +1,7 @@
+prefix datafaqs: <http://purl.org/twc/vocab/datafaqs#>
+select distinct ?space
+where {
+  graph <http://purl.org/twc/lodcloud/source/us/dataset/lod-tag/version/2014-04-07> { 
+    [] a datafaqs:CKANDataset; <http://rdfs.org/ns/void#uriSpace> ?space .
+  }
+}
