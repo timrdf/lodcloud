@@ -1,0 +1,82 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix sioc:       <http://rdfs.org/sioc/ns#> .
+@prefix pmlp:       <http://inference-web.org/2.0/pml-provenance.owl#> .
+@prefix oboro:      <http://obofoundry.org/ro/ro.owl#> .
+@prefix oprov:      <http://openprovenance.org/ontology#> .
+@prefix hartigprov: <http://purl.org/net/provenance/ns#> .
+@prefix nfo:        <http://www.semanticdesktop.org/ontologies/nfo/#> .
+@prefix pmlj:       <http://inference-web.org/2.0/pml-justification.owl#> .
+@prefix conv:       <http://purl.org/twc/vocab/conversion/> .
+@prefix irw: <http://www.ontologydesignpatterns.org/ont/web/irw.owl#> .
+@prefix pml:        <http://provenanceweb.org/ns/pml#> .
+
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix sioc:    <http://rdfs.org/sioc/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
+
+<endpoints.csv>
+   a pmlp:Information, prov:Entity;
+   pmlp:hasModificationDateTime "2014-05-14T18:57:02+00:00"^^xsd:dateTime;
+   pml:wasGeneratedWithPlan <manual#dea6d98b-8091-4f6a-9064-ea50a585c18e>;
+.
+<manual#dea6d98b-8091-4f6a-9064-ea50a585c18e> a prov:Plan;
+  dcterms:date "2014-05-14T18:57:23+00:00"^^xsd:dateTime;
+  prov:specializationOf conv:manual_Method;
+.
+conv:manual_Method a prov:Plan .
+<endpoints.csv>
+   a nfo:FileDataObject;
+   nfo:fileName "endpoints.csv";
+   nfo:hasHash <md5_750fc3ee7897b5b9d640bbab039d11ae_time_1400093843>;
+.
+<md5_750fc3ee7897b5b9d640bbab039d11ae_time_1400093843>
+   a nfo:FileHash; 
+   dcterms:date      "2014-05-14T18:57:23+00:00"^^xsd:dateTime;
+   nfo:hashAlgorithm "md5";
+   nfo:hashValue     "750fc3ee7897b5b9d640bbab039d11ae";
+.
+
+<endpoints.csv> prov:wasDerivedFrom <https://github.com/timrdf/prizms/wiki/Prizms-Nodes> .
+<https://github.com/timrdf/prizms/wiki/Prizms-Nodes>
+   a sioc:Item, irw:WebResource, prov:Entity;
+.
+<endpoints.csv> prov:wasDerivedFrom <https://github.com/timrdf/prizms/wiki/Prizms-Nodes> .
+
+<nodeSet/dea6d98b-8091-4f6a-9064-ea50a585c18e>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <endpoints.csv>;
+   pmlj:isConsequentOf <inferenceStep/dea6d98b-8091-4f6a-9064-ea50a585c18e>;
+.
+<inferenceStep/dea6d98b-8091-4f6a-9064-ea50a585c18e>
+   a pmlj:InferenceStep;
+   pmlj:hasIndex 0;
+   rdfs:seeAlso <nodeSetdea6d98b-8091-4f6a-9064-ea50a585c18e_antecedent>;
+#   pmlj:hasAntecedentList ( <nodeSetdea6d98b-8091-4f6a-9064-ea50a585c18e_antecedent> );
+   pmlj:hasInferenceEngine <manual#dea6d98b-8091-4f6a-9064-ea50a585c18e>;
+   pmlj:hasInferenceRule   conv:manual_Method;
+   oboro:has_agent          [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+   hartigprov:involvedActor [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+.
+
+<wasControlled/dea6d98b-8091-4f6a-9064-ea50a585c18e>
+   a oprov:WasControlledBy;
+   oprov:cause  [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+   oprov:effect <inferenceStep/dea6d98b-8091-4f6a-9064-ea50a585c18e>;
+   oprov:endTime "2014-05-14T18:57:23+00:00"^^xsd:dateTime;
+.
+<nodeSetdea6d98b-8091-4f6a-9064-ea50a585c18e_antecedent>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <https://github.com/timrdf/prizms/wiki/Prizms-Nodes>;
+.
+
+<manual#dea6d98b-8091-4f6a-9064-ea50a585c18e>
+   a pmlp:InferenceEngine, conv:Manual_Engine, prov:Entity;
+   dcterms:identifier "manual#dea6d98b-8091-4f6a-9064-ea50a585c18e";
+.
+
+conv:Manual_Engine rdfs:subClassOf pmlp:InferenceEngine .
