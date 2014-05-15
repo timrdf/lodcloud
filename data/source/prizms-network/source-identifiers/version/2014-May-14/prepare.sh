@@ -33,4 +33,4 @@ for endpoint in `find source -mindepth 1 -maxdepth 1 -type d`; do
    v=`wc -l $endpoint/version-identifiers.rq.sparql.csv | awk '{print $1}'`
    echo `basename $endpoint`,$s,$d,$v >> $csv
 done
-cat $csv
+cat $csv | sort --field-separator=',' -n -r --key=2,4 > $csv.tmp && mv $csv.tmp $csv
