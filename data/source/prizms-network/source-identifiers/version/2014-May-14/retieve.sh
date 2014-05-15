@@ -19,16 +19,19 @@ for endpoint in `cat source/endpoints.csv | grep ^http`; do
    domain=${domain#http://}                        # e.g. healthdata.tw.rpi.edu
    echo $endpoint $domain
 
-   cache-queries.sh $endpoint -o sparql -q ../../src/source-identifiers.rq $rq -od source/$domain
-   echo source/$domain/source-identifiers.rq.sparql.csv
-   saxon.sh ../../src/bindings.xsl sparql csv source/$domain/source-identifiers.rq.sparql > source/$domain/source-identifiers.rq.sparql.csv
+   for id in source dataset version; do
+      cache-queries.sh $endpoint -o sparql -q ../../src/$id-identifiers.rq $rq -od source/$domain
+      echo source/$domain/$id-identifiers.rq.sparql.csv
+      saxon.sh ../../src/bindings.xsl sparql csv source/$domain/$id-identifiers.rq.sparql > source/$domain/$id-identifiers.rq.sparql.csv
+
+      echo "number of distinct $id identifiers:"
+      cat source/*/$id*.csv | sort -u  | wc -l
+
+      echo "number of source identifier occurrences:"
+      cat source/*/$id*.csv | wc -l
+
+      echo "from number of distinct Prizms nodes:"
+      wc -l source/endpoints.csv
+   done
 done
 
-echo "number of distinct source identifiers:"
-cat source/*/*.csv | sort -u  | wc -l
-
-echo "number of source identifier occurrences:"
-cat source/*/*.csv | wc -l
-
-echo "from number of distinct Prizms nodes:"
-wc -l source/endpoints.csv

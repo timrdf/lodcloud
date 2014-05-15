@@ -15,7 +15,7 @@
         </result> -->
 
 <xsl:template match="/">
-   <xsl:for-each-group select="//rq:result/rq:binding[@name='sourceID']/rq:literal" group-by="text()">
+   <xsl:for-each-group select="//rq:result/rq:binding/rq:literal" group-by="text()">
       <xsl:value-of select="concat(text(),$NL)"/>
    </xsl:for-each-group>
 </xsl:template>
