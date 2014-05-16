@@ -26,11 +26,14 @@
 mkdir -p intermediate
 csv='intermediate/ids-counts.csv'
 echo $csv
-echo "endpoint,num source IDs,num dataset IDs,num version IDs" > $csv
+rm -f $csv.tmp
 for endpoint in `find source -mindepth 1 -maxdepth 1 -type d`; do
    s=`wc -l $endpoint/source-identifiers.rq.sparql.csv | awk '{print $1}'`
    d=`wc -l $endpoint/dataset-identifiers.rq.sparql.csv | awk '{print $1}'`
    v=`wc -l $endpoint/version-identifiers.rq.sparql.csv | awk '{print $1}'`
-   echo `basename $endpoint`,$s,$d,$v >> $csv
+   echo `basename $endpoint`,$s,$d,$v >> $csv.tmp
 done
-cat $csv | sort --field-separator=',' -n -r --key=2,4 > $csv.tmp && mv $csv.tmp $csv
+echo "endpoint,num source IDs,num dataset IDs,num version IDs" > $csv
+cat $csv.tmp | sed 's/,/ /g' | sort -n -r --key=2,4 | sed 's/ /,/g' >> $csv
+
+cat $csv.tmp | sed 's/,/ /g' | sort -n -r --key=2,4 | awk '{printf("\\T %s     & %s & %s & %s \\B \\\\ \\hline\n",$1,$2,$3,$4)}'
