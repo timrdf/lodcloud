@@ -2,7 +2,7 @@ prefix conversion: <http://purl.org/twc/vocab/conversion/>
 select distinct ?ID
 where {
   graph ?g {
-    [] conversion:source_identifier ?ID
+    [] conversion:version_identifier ?ID
   }
 } 
 order by ?ID
