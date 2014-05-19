@@ -22,18 +22,20 @@ else
       for url in `find . -name "*.url"`; do
          file=${url%.url}
          if [[ -e "$file" ]]; then
+            du -sh $file | awk '{print $2,$1}'
             if [[ `gzipped.sh "$file"` == 'yes' ]]; then
                file $file
             elif [[ -h "$file" ]]; then
                # It has already been processed.
                echo "$file -> `readlink $file` (already)"
             else
-               new=`rename-by-syntax.sh -v --mark-invalid "$file"`
+               new=`rename-by-syntax.sh -v --mark-invalid --good-guess-is-valid-enough "$file"`
                if [[ -e "$new" && "$new" != "$file" && "$new" != *invalid* ]]; then
                   echo "$file -> $new.gz"
                   touch $url
                   cat "$new" | gzip > $new.gz && rm "$new"
-                  ln -s "$new.gz" "$file"
+                  ln -s  "$new.gz" "$file"
+                  du -sh "$new.gz" | awk '{print $2,$1}'
                else
                   echo "$file -> $new ??"
                   if [[ "$new" != "$file" ]]; then
