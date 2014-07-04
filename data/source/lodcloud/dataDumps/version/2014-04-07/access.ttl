@@ -1,0 +1,27 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix conversion: <http://purl.org/twc/vocab/conversion/> .
+@prefix dcat:       <http://www.w3.org/ns/dcat#> .
+@prefix void:       <http://rdfs.org/ns/void#> .
+@prefix nfo:        <http://www.semanticdesktop.org/ontologies/nfo/#> .
+@prefix prov:       <http://www.w3.org/ns/prov#> .
+@prefix datafaqs:   <http://purl.org/twc/vocab/datafaqs#> .
+@prefix :           <http://linkeddata.rl.af.mil/id/> .
+@base               <http://linkeddata.rl.af.mil/id/> .
+
+<http://linkeddata.rl.af.mil/source/c2tc-rl-af-mil/dataset/lod-tag-dump-spobal/version/2014-04-07>
+   a void:Dataset, dcat:Dataset;
+   conversion:source_identifier  "c2tc-rl-af-mil";
+   conversion:dataset_identifier "lod-tag-dump-spobal";
+   conversion:identifier         "1f917930c678e2c86acbbd3ab88acf43";
+   prov:wasDerivedFrom <distribution/87ae9300b35f59603f6501a73222dc89>;
+.
+
+<distribution/87ae9300b35f59603f6501a73222dc89>
+   a dcat:Distribution;
+   dcat:downloadURL <http://purl.org/twc/lodcloud/source/us/file/lod-tag/version/2014-04-07/conversion/us-lod-tag-2014-04-07.ttl.gz>;
+.
+
+<dataset/87ae9300b35f59603f6501a73222dc89>
+   a dcat:Dataset;
+   dcat:distribution <distribution/87ae9300b35f59603f6501a73222dc89>;
+.
