@@ -87,12 +87,12 @@
       conversion:enhance [
          conversion:fromCol 6; conversion:toCol 20;
          a qb:Observation;
-         conversion:domain_template "[/sd][#1]/[H]";
+         conversion:domain_template "[/sd][>#1<]/[H]";
          conversion:domain_name     "Answer";
 
          conversion:equivalent_property prov:wasDerivedFrom;
          conversion:object "[/s]survey-1-questions/[H]";
-         conversion:range   pml:Question; # TODO: this isn't typing the header.
+         conversion:range   rdfs:Literal;
       ];
       conversion:enhance [
          conversion:class_name "Answer";
@@ -188,8 +188,8 @@
          ov:csvCol          8;
          ov:csvHeader       "responser's general comments";
          conversion:bundled_by :dataset_bundle;
-         conversion:equivalent_property dcterms:description;
-         conversion:range   rdfs:Literal;
+         #conversion:equivalent_property dcterms:description;
+         #conversion:range   rdfs:Literal;
       ];
       conversion:enhance [
          ov:csvCol          9;
@@ -226,7 +226,7 @@
             conversion:range doap:Software;
             conversion:range_template "[/sd]tool/[.]";
             a conversion:DirectSameAsEnhancement;
-            conversion:links_via <../../../../lod-tools/version/2013-Aug-05/automatic/lod-tools.csv.e1.ttl>; 
+            conversion:links_via <../../../../lod-tools/version/2013-Aug-31/automatic/lod-tools.csv.e1.ttl>; 
                                          # e.g. "Protege" 
                                          #         -> http://purl.org/twc/lodcloud/source/us/dataset/survey-1-results/tool/Protege
                                          #            -> http://purl.org/twc/lodcloud/id/tool/Protege

@@ -11,23 +11,29 @@ construct {
    ?dataset void:triples      ?triples .
 
    ?linkset                    # <http://instances.tw.rpi.edu/id/linkset/DBpedia/e977476546bf11f68176d67246280e63>
+      a void:Linkset;
       void:target  ?target;    # <http://thedatahub.org/dataset/aemet>
+      void:target  ?dataset;   # <http://thedatahub.org/dataset/DBpedia>
       void:triples ?overlap;   # 82
    .
    ?target a datafaqs:CKANDataset .
 }
 where {
-   ?dataset                    # <http://thedatahub.org/dataset/DBpedia>
-      a datafaqs:CKANDataset;
-      void:subset ?linkset;
-   .
-   optional{ ?dataset tag:taggedWithTag ?tag }
-   optional{ ?dataset void:triples      ?triples }
+   graph <http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group/version/2014-07-04> {
+      ?dataset                    # <http://thedatahub.org/dataset/DBpedia>
+         a datafaqs:CKANDataset
+      .
+      optional{ ?dataset tag:taggedWithTag ?tag }
+      optional{ ?dataset void:triples      ?triples }
 
-   ?linkset                    # <http://instances.tw.rpi.edu/id/linkset/DBpedia/e977476546bf11f68176d67246280e63>
-      void:target  ?target;    # <http://thedatahub.org/dataset/aemet>
-      void:triples ?overlap;   # 82
-   .
-   ?target a datafaqs:CKANDataset .
-   filter(?dataset != ?target)
+      optional {
+         ?dataset void:subset ?linkset .
+         ?linkset                 # <http://instances.tw.rpi.edu/id/linkset/DBpedia/e977476546bf11f68176d67246280e63>
+            void:target  ?target; # <http://thedatahub.org/dataset/aemet>
+            void:triples ?overlap # 82
+         .
+         ?target a datafaqs:CKANDataset .
+         filter(?dataset != ?target)
+      }
+   }
 }
