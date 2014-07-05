@@ -12,6 +12,8 @@
 #3>      <https://github.com/timrdf/csv2rdf4lod-automation/wiki/tic-turtle-in-comments>;
 #3> .
 
+source /Users/lebot/afrl/information_management/m4rker/domain_instances/tw-data-gov/source-me.sh
+
 pushd `dirname $0` &> /dev/null
    version=`date +%Y-%b-%d`
    log=`date +%Y-%b-%dT%H%M`.log
@@ -26,6 +28,7 @@ pushd `dirname $0` &> /dev/null
          #pcurl.sh http://prefix.cc/popular/all.file.csv
          for url in 'http://prefix.cc/popular/all.file.vann' \
                     'http://prefix.cc/popular/all.file.csv'; do
+            export http_proxy='http://cloak.rl.af.mil:8080'
             curl -LO $url                                                     
             justify.sh $url `basename $url` 'http://dbpedia.org/resource/CURL'
          done
