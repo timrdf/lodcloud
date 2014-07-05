@@ -13,6 +13,9 @@
 #3> .
 
 mkdir -p manual
-cp ../../src/lodcloud-diagram.rq manual/lodcloud-diagram.rq
-echo "MANUALLY ADD GRAPH{} to manual/lodcloud-diagram.rq"
+if [[ ! -e manual/lodcloud-diagram.rq ]]; then
+   cp ../../src/lodcloud-diagram.rq manual/lodcloud-diagram.rq
+   echo "MANUALLY ADD GRAPH{} to manual/lodcloud-diagram.rq"
+   exit
+fi
 cache-queries.sh ${CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT:-'http://lodcloud.tw.rpi.edu/sparql'} -o rdf -q manual/lodcloud-diagram.rq -od source/
