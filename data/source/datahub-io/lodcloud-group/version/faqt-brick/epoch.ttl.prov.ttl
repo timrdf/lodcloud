@@ -1,0 +1,150 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix pmlp:       <http://inference-web.org/2.0/pml-provenance.owl#> .
+@prefix pmlj:       <http://inference-web.org/2.0/pml-justification.owl#> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+@prefix sioc:       <http://rdfs.org/sioc/ns#> .
+@prefix oboro:      <http://obofoundry.org/ro/ro.owl#> .
+@prefix oprov:      <http://openprovenance.org/ontology#> .
+@prefix hartigprov: <http://purl.org/net/provenance/ns#> .
+@prefix irw:        <http://www.ontologydesignpatterns.org/ont/web/irw.owl#> .
+@prefix nfo:        <http://www.semanticdesktop.org/ontologies/nfo/#> .
+@prefix conv:       <http://purl.org/twc/vocab/conversion/> .
+@prefix httphead:   <http://inference-web.org/registry/MPR/HTTP_1_1_HEAD.owl#> .
+@prefix httpget:    <http://inference-web.org/registry/MPR/HTTP_1_1_GET.owl#> .
+@prefix httppost:   <http://inference-web.org/registry/MPR/HTTP_1_1_POST.owl#> .
+@prefix prov:       <http://www.w3.org/ns/prov#> .
+
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix sioc:    <http://rdfs.org/sioc/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
+
+<https://raw.githubusercontent.com/timrdf/lodcloud/master/data/faqs/lifted-ckan/faqt-brick/epoch.ttl>
+   a pmlp:Source, prov:Entity;
+.
+
+<https://raw.githubusercontent.com/timrdf/lodcloud/master/data/faqs/lifted-ckan/faqt-brick/epoch.ttl>
+   a pmlp:Source, prov:Entity;
+.
+
+<epoch.ttl>
+   a nfo:FileDataObject, prov:Entity, pmlp:Information;
+   prov:wasQuotedFrom      <https://raw.githubusercontent.com/timrdf/lodcloud/master/data/faqs/lifted-ckan/faqt-brick/epoch.ttl>;
+   prov:qualifiedQuotation <quotation_5b6b28a9-7a96-43a4-b230-50742f679841>;
+   pmlp:hasReferenceSourceUsage <sourceUsage5b6b28a9-7a96-43a4-b230-50742f679841_content>;
+.
+<epoch.ttl>
+   a nfo:FileDataObject;
+   nfo:fileName "epoch.ttl";
+   nfo:hasHash <md5_850651ec70d7fb6ac969bb5384996d8c_time_1404498893>;
+.
+<md5_850651ec70d7fb6ac969bb5384996d8c_time_1404498893>
+   a nfo:FileHash; 
+   dcterms:date      "2014-07-04T18:34:53+00:00"^^xsd:dateTime;
+   nfo:hashAlgorithm "md5";
+   nfo:hashValue     "850651ec70d7fb6ac969bb5384996d8c";
+.
+
+<nodeSet5b6b28a9-7a96-43a4-b230-50742f679841_content>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <epoch.ttl>;
+   pmlj:isConsequentOf <inferenceStep5b6b28a9-7a96-43a4-b230-50742f679841_content>;
+.
+<inferenceStep5b6b28a9-7a96-43a4-b230-50742f679841_content>
+   a pmlj:InferenceStep;
+   pmlj:hasIndex 0;
+   pmlj:hasAntecedentList ();
+   pmlj:hasSourceUsage     <sourceUsage5b6b28a9-7a96-43a4-b230-50742f679841_content>;
+   pmlj:hasInferenceEngine conv:curl_md5_0988c1e90063ed2b57f4fe1a21c23fe2;
+   pmlj:hasInferenceRule   httpget:HTTP_1_1_GET;
+   oboro:has_agent          [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+   hartigprov:involvedActor [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+.
+
+<quotation_5b6b28a9-7a96-43a4-b230-50742f679841>
+   a prov:Quotation;
+   prov:entity <https://raw.githubusercontent.com/timrdf/lodcloud/master/data/faqs/lifted-ckan/faqt-brick/epoch.ttl>;
+   prov:atTime "2014-07-04T18:34:53+00:00"^^xsd:dateTime;
+.
+
+<sourceUsage5b6b28a9-7a96-43a4-b230-50742f679841_content>
+   a pmlp:SourceUsage;
+   pmlp:hasSource        <https://raw.githubusercontent.com/timrdf/lodcloud/master/data/faqs/lifted-ckan/faqt-brick/epoch.ttl>;
+   pmlp:hasUsageDateTime "2014-07-04T18:34:53+00:00"^^xsd:dateTime;
+.
+
+<wasControlledBy5b6b28a9-7a96-43a4-b230-50742f679841_content>
+   a oprov:WasControlledBy;
+   oprov:cause  [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+   oprov:effect <inferenceStep5b6b28a9-7a96-43a4-b230-50742f679841_content>;
+   oprov:endTime "2014-07-04T18:34:53+00:00"^^xsd:dateTime;
+.
+ 
+<info5b6b28a9-7a96-43a4-b230-50742f679841_url_header>
+   a pmlp:Information, conv:HTTPHeader;
+   pmlp:hasRawString """HTTP/1.1 200 OK
+Date: Fri, 04 Jul 2014 18:34:52 GMT
+Server: Apache
+Content-Security-Policy: default-src 'none'
+Access-Control-Allow-Origin: https://render.githubusercontent.com
+X-XSS-Protection: 1; mode=block
+X-Frame-Options: deny
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=31536000
+ETag: "e420b4a8808fb3e8fcdbf9bd0e6e65830d1a8cb0"
+Content-Type: text/plain; charset=utf-8
+Cache-Control: max-age=300
+Content-Length: 3012
+Accept-Ranges: bytes
+Via: 1.1 varnish
+X-Served-By: cache-iad2127-IAD
+X-Cache: MISS
+X-Cache-Hits: 0
+Vary: Authorization,Accept-Encoding
+Expires: Fri, 04 Jul 2014 18:39:52 GMT
+Source-Age: 0
+""";
+   pmlp:hasReferenceSourceUsage <sourceUsage5b6b28a9-7a96-43a4-b230-50742f679841_url_header>;
+.
+ 
+<nodeSet5b6b28a9-7a96-43a4-b230-50742f679841_url_header>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <info5b6b28a9-7a96-43a4-b230-50742f679841_url_header>;
+   pmlj:isConsequentOf <inferenceStep5b6b28a9-7a96-43a4-b230-50742f679841_url_header>;
+.
+<inferenceStep5b6b28a9-7a96-43a4-b230-50742f679841_url_header>
+   a pmlj:InferenceStep;
+   pmlj:hasIndex 0;
+   pmlj:hasAntecedentList ();
+   pmlj:hasSourceUsage     <sourceUsage5b6b28a9-7a96-43a4-b230-50742f679841_url_header>;
+   pmlj:hasInferenceEngine conv:curl_md5_0988c1e90063ed2b57f4fe1a21c23fe2;
+   pmlj:hasInferenceRule   httphead:HTTP_1_1_HEAD;
+   oboro:has_agent          [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+   hartigprov:involvedActor [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+.
+
+<sourceUsage5b6b28a9-7a96-43a4-b230-50742f679841_url_header>
+   a pmlp:SourceUsage;
+   pmlp:hasSource        <https://raw.githubusercontent.com/timrdf/lodcloud/master/data/faqs/lifted-ckan/faqt-brick/epoch.ttl>;
+   pmlp:hasUsageDateTime "2014-07-04T18:34:53+00:00"^^xsd:dateTime;
+.
+<wasControlledBy5b6b28a9-7a96-43a4-b230-50742f679841_url_header>
+   a oprov:WasControlledBy;
+   oprov:cause  [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+   oprov:effect <nodeSet5b6b28a9-7a96-43a4-b230-50742f679841_url_header>;
+   oprov:endTime "2014-07-04T18:34:53+00:00"^^xsd:dateTime;
+.
+
+
+conv:curl_md5_0988c1e90063ed2b57f4fe1a21c23fe2
+   a prov:Agent, pmlp:InferenceEngine, conv:Curl;
+   dcterms:identifier "md5_0988c1e90063ed2b57f4fe1a21c23fe2";
+   dcterms:description """curl 7.19.7 (x86_64-pc-linux-gnu) libcurl/7.19.7 OpenSSL/0.9.8k zlib/1.2.3.3 libidn/1.15
+Protocols: tftp ftp telnet dict ldap ldaps http file https ftps 
+Features: GSS-Negotiate IDN IPv6 Largefile NTLM SSL libz """;
+.
+
+conv:Curl rdfs:subClassOf pmlp:InferenceEngine .

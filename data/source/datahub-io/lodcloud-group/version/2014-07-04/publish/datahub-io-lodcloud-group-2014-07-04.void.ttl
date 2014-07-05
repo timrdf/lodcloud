@@ -1,0 +1,36 @@
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix conversion: <http://purl.org/twc/vocab/conversion/> .
+@prefix void:       <http://rdfs.org/ns/void#> .
+
+<http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group/version/2014-07-04> dcterms:modified "2014-07-05T05:16:04+00:00"^^xsd:dateTime .
+@prefix void:       <http://rdfs.org/ns/void#> .
+@prefix conversion: <http://purl.org/twc/vocab/conversion/> .
+
+<http://purl.org/twc/lodcloud/void> a void:Dataset;
+   void:rootResource <http://purl.org/twc/lodcloud/void>;
+   void:subset       <http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group>;
+.
+<http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group>
+    a conversion:AbstractDataset, void:Dataset;
+    conversion:base_uri              "http://purl.org/twc/lodcloud";
+    conversion:source_identifier     "datahub-io";
+    conversion:dataset_identifier    "lodcloud-group";
+.
+
+<http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group> a conversion:AbstractDataset;
+   void:subset <http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group/version/2014-07-04> .
+<http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group/version/2014-07-04>
+    a conversion:VersionedDataset, void:Dataset;
+    conversion:base_uri              "http://purl.org/twc/lodcloud";
+    conversion:source_identifier     "datahub-io";
+    conversion:dataset_identifier    "lodcloud-group";
+    conversion:version_identifier    "2014-07-04";
+.
+
+<http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group/version/2014-07-04>
+   void:dataDump <> .
+<>
+   dcterms:format <http://www.w3.org/ns/formats/Turtle> .
+<>
+   dcterms:format <http://provenanceweb.org/format/mime/application/gzip> .
