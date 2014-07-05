@@ -849,6 +849,8 @@ export CSV2RDF4LOD_PUBLISH_VIRTUOSO_SPARQL_ENDPOINT="http://purl.org/twc/lodclou
 export CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT="http://logd.tw.rpi.edu/sparql" 
 export CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT="http://purl.org/twc/lodcloud/sparql"
 
+export CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT_SEPARATE_NG_PROVENANCE='true'
+
 #
 # Customize: Directory where SPARQL query files exist 
 #            and should be cached with cache-queries.sh.
