@@ -60,7 +60,7 @@ fi
 #-#-#-#-#-#-#-#-#
 version="$1"
 version_reason=""
-url="$2"
+url='http://lod-cloud.net/versions/2011-09-19/lod-cloud_colored.svg' #"$2"
 if [[ "$1" == "cr:auto" && ${#url} -gt 0 ]]; then
    version=`urldate.sh $url`
    #echo "Attempting to use URL modification date to name version: $version"
@@ -135,24 +135,26 @@ if [[ ! -d $version || ! -d $version/source || `find $version -empty -type d -na
    pushd $version/source &> /dev/null
       touch .__CSV2RDF4LOD_retrieval # Make a timestamp so we know what files were created during retrieval.
       # - - - - - - - - - - - - - - - - - - - - Replace below for custom retrieval  - - - \
-      if [[ "$CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT" =~ http* ]]; then                    # |
-         for rq in `find ../../../src/ -name "*.rq"`; do                                # |
-            cache-queries.sh "$CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT" -o rdf -q $rq -od . # |
-         done                                                                           # |
-      fi                                                                                # |
-      if [[ "$CSV2RDF4LOD_RETRIEVE_DROID_SOURCES" != "false" ]]; then                   # |
-         sleep 1                                                                        # |
-         cr-droid.sh . > cr-droid.ttl                                                   # |
-      fi                                                                                # |
+      if [[ "$CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT" =~ http* ]]; then                       # |
+         for rq in `find ../../../src/ -name "*.rq"`; do                                   # |
+            cache-queries.sh "$CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT" -o rdf -q $rq -od .    # |
+         done                                                                              # |
+      fi                                                                                   # |
+      if [[ "$url" =~ http* ]]; then                                                       # |
+         pcurl.sh $url                                                                     # |
+      fi                                                                                   # | 
+      pcurl.sh 'https://raw.githubusercontent.com/timrdf/vsr/master/src/xsl/grddl/svg.xsl' # |
+      if [[ "$CSV2RDF4LOD_RETRIEVE_DROID_SOURCES" != "false" ]]; then                      # |
+         sleep 1                                                                           # |
+         cr-droid.sh . > cr-droid.ttl                                                      # |
+      fi                                                                                   # |
       # - - - - - - - - - - - - - - - - - - - - Replace above for custom retrieval - - - -/
    popd &> /dev/null
 
    # Go into the conversion cockpit of the new version.
    pushd $version &> /dev/null
 
-      if [ ! -e manual ]; then
-         mkdir manual
-      fi
+      mkdir -p manual automatic
 
       retrieved_files=`find source -newer source/.__CSV2RDF4LOD_retrieval -type f | grep -v "pml.ttl$" | grep -v "cr-droid.ttl$"`
 
@@ -213,25 +215,6 @@ if [[ ! -d $version || ! -d $version/source || `find $version -empty -type d -na
          cr-create-conversion-trigger.sh -w --comment-character "$commentCharacter" --header-line $headerLine --delimiter ${delimiter:-","} $files
       elif [[ $all_rdf == "yes" ]]; then
          echo "[INFO] All retrieved files are RDF; not creating conversion trigger."
-      else
-         # Take a best guess as to what data files should be converted.
-         # Include source/* that is newer than source/.__CSV2RDF4LOD_retrieval and NOT *.pml.ttl
-
-         existing_files=""
-         for name in $retrieved_files; do
-            if [[ -e $name ]]; then
-               existing_files="$existing_files $name"
-            else
-               echo "[INFO] \"$name\" does not exist."
-            fi
-         done
-         if [[ ${#existing_files} -gt 0 ]]; then
-            # Create a conversion trigger for the files obtained during retrieval.
-            cr-create-conversion-trigger.sh -w --comment-character "$commentCharacter" --header-line $headerLine --delimiter ${delimiter:-","} $existing_files
-         else
-            echo
-            echo "ERROR: No valid files found when retrieving `cr-dataset-id.sh`; not creating conversion trigger."
-         fi
       fi
 
       cr-convert.sh
