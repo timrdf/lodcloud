@@ -1,0 +1,96 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix sioc:       <http://rdfs.org/sioc/ns#> .
+@prefix pmlp:       <http://inference-web.org/2.0/pml-provenance.owl#> .
+@prefix oboro:      <http://obofoundry.org/ro/ro.owl#> .
+@prefix oprov:      <http://openprovenance.org/ontology#> .
+@prefix hartigprov: <http://purl.org/net/provenance/ns#> .
+@prefix nfo:        <http://www.semanticdesktop.org/ontologies/nfo/#> .
+@prefix pmlj:       <http://inference-web.org/2.0/pml-justification.owl#> .
+@prefix conv:       <http://purl.org/twc/vocab/conversion/> .
+@prefix irw: <http://www.ontologydesignpatterns.org/ont/web/irw.owl#> .
+@prefix pml:        <http://provenanceweb.org/ns/pml#> .
+
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix sioc:    <http://rdfs.org/sioc/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
+<http://purl.org/twc/id/machine/lebot/MacBookPro6_2>
+   a prov:Entity;
+.
+<http://tw.rpi.edu/instances/TimLebo>
+  a prov:Agent, foaf:Agent;
+  foaf:holdsAccount <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
+.
+<http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>
+   a foaf:OnlineAccount, prov:Agent;
+   foaf:accountName "lebot";
+   dcterms:isPartOf <http://purl.org/twc/id/machine/lebot/MacBookPro6_2>;
+   sioc:account_of      <http://tw.rpi.edu/instances/TimLebo>;
+   prov:actedOnBehalfOf <http://tw.rpi.edu/instances/TimLebo>;
+.
+
+<dataset-revisions.rq>
+   a pmlp:Information, prov:Entity;
+   pmlp:hasModificationDateTime "2014-07-07T11:24:09-04:00"^^xsd:dateTime;
+   pml:wasGeneratedWithPlan <http#fe73d389-50b1-4f84-81fe-df5764419623>;
+.
+<http#fe73d389-50b1-4f84-81fe-df5764419623> a prov:Plan;
+  dcterms:date "2014-07-07T11:24:19-04:00"^^xsd:dateTime;
+  prov:specializationOf <http://dbpedia.org/resource/Hypertext_Transfer_Protocol>;
+.
+<http://dbpedia.org/resource/Hypertext_Transfer_Protocol> a prov:Plan .
+<dataset-revisions.rq>
+   a nfo:FileDataObject;
+   nfo:fileName "dataset-revisions.rq";
+   nfo:hasHash <md5_4764603963c6c0b200b1cd762df5f898_time_1404746659>;
+.
+<md5_4764603963c6c0b200b1cd762df5f898_time_1404746659>
+   a nfo:FileHash; 
+   dcterms:date      "2014-07-07T11:24:19-04:00"^^xsd:dateTime;
+   nfo:hashAlgorithm "md5";
+   nfo:hashValue     "4764603963c6c0b200b1cd762df5f898";
+.
+
+<dataset-revisions.rq> prov:wasDerivedFrom <https://raw.githubusercontent.com/timrdf/lodcloud/master/data/faqs/lifted-ckan/faqt-brick/dataset-revisions.rq> .
+<https://raw.githubusercontent.com/timrdf/lodcloud/master/data/faqs/lifted-ckan/faqt-brick/dataset-revisions.rq>
+   a sioc:Item, irw:WebResource, prov:Entity;
+.
+<dataset-revisions.rq> prov:wasDerivedFrom <https://raw.githubusercontent.com/timrdf/lodcloud/master/data/faqs/lifted-ckan/faqt-brick/dataset-revisions.rq> .
+
+<nodeSet/fe73d389-50b1-4f84-81fe-df5764419623>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <dataset-revisions.rq>;
+   pmlj:isConsequentOf <inferenceStep/fe73d389-50b1-4f84-81fe-df5764419623>;
+.
+<inferenceStep/fe73d389-50b1-4f84-81fe-df5764419623>
+   a pmlj:InferenceStep;
+   pmlj:hasIndex 0;
+   rdfs:seeAlso <nodeSetfe73d389-50b1-4f84-81fe-df5764419623_antecedent>;
+#   pmlj:hasAntecedentList ( <nodeSetfe73d389-50b1-4f84-81fe-df5764419623_antecedent> );
+   pmlj:hasInferenceEngine <http#fe73d389-50b1-4f84-81fe-df5764419623>;
+   pmlj:hasInferenceRule   <http://dbpedia.org/resource/Hypertext_Transfer_Protocol>;
+   oboro:has_agent          <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
+   hartigprov:involvedActor <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
+.
+
+<wasControlled/fe73d389-50b1-4f84-81fe-df5764419623>
+   a oprov:WasControlledBy;
+   oprov:cause  <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
+   oprov:effect <inferenceStep/fe73d389-50b1-4f84-81fe-df5764419623>;
+   oprov:endTime "2014-07-07T11:24:19-04:00"^^xsd:dateTime;
+.
+<nodeSetfe73d389-50b1-4f84-81fe-df5764419623_antecedent>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <https://raw.githubusercontent.com/timrdf/lodcloud/master/data/faqs/lifted-ckan/faqt-brick/dataset-revisions.rq>;
+.
+
+<http#fe73d389-50b1-4f84-81fe-df5764419623>
+   a pmlp:InferenceEngine, <http://dbpedia.org/resource/Hypertext_Transfer_Protocol>, prov:Entity;
+   dcterms:identifier "http#fe73d389-50b1-4f84-81fe-df5764419623";
+.
+
+<http://dbpedia.org/resource/Hypertext_Transfer_Protocol> rdfs:subClassOf pmlp:InferenceEngine .
