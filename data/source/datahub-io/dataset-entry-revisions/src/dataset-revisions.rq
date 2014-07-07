@@ -1,17 +1,26 @@
-prefix void:     <http://rdfs.org/ns/void#>
-prefix datafaqs: <http://purl.org/twc/vocab/datafaqs#>
+prefix void:       <http://rdfs.org/ns/void#>
+prefix conversion: <http://purl.org/twc/vocab/conversion/>
+prefix datafaqs:   <http://purl.org/twc/vocab/datafaqs#>
 prefix prov:       <http://www.w3.org/ns/prov#>
 prefix dcterms:    <http://purl.org/dc/terms/>
 
 
 select ?dataset ?revision ?created ?agent ?description
 where {
-   ?dataset                    # <http://datahub.io/dataset/2000-us-census-rdf>
-      a datafaqs:CKANDataset;
-      prov:wasDerivedFrom ?revision;
-   .
-   ?revision
-    dcterms:created      ?created;
-    dcterms:description  ?description;
-    prov:wasAttributedTo ?agent .
+   <http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group>
+      void:subset ?version .
+                  ?version a conversion:VersionedDataset;
+                     dcterms:modified ?date .
+   # This filter should be replaced with something to bind the one with max(date)...
+   filter(?version = <http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group/version/2014-07-06>)
+   graph ?version {
+      ?dataset                    # <http://datahub.io/dataset/2000-us-census-rdf>
+         a datafaqs:CKANDataset;
+         prov:wasDerivedFrom ?revision
+      .
+      ?revision
+       dcterms:created      ?created;
+       dcterms:description  ?description;
+       prov:wasAttributedTo ?agent .
+   }
 }

@@ -138,7 +138,7 @@ if [[ ! -d $version || ! -d $version/source || `find $version -empty -type d -na
       # - - - - - - - - - - - - - - - - - - - - Replace below for custom retrieval  - - - \
       if [[ "$CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT" =~ http* ]]; then                       # |
          for rq in `find ../../../src/ -name "*.rq"`; do                                   # |
-            cache-queries.sh "$CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT" -o rdf -q $rq -od .    # |
+            cache-queries.sh "$CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT" -o csv -q $rq -od .    # |
          done                                                                              # |
       fi                                                                                   # |
       if [[ "$url" =~ http* ]]; then                                                       # |
