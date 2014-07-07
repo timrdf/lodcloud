@@ -1,0 +1,96 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix sioc:       <http://rdfs.org/sioc/ns#> .
+@prefix pmlp:       <http://inference-web.org/2.0/pml-provenance.owl#> .
+@prefix oboro:      <http://obofoundry.org/ro/ro.owl#> .
+@prefix oprov:      <http://openprovenance.org/ontology#> .
+@prefix hartigprov: <http://purl.org/net/provenance/ns#> .
+@prefix nfo:        <http://www.semanticdesktop.org/ontologies/nfo/#> .
+@prefix pmlj:       <http://inference-web.org/2.0/pml-justification.owl#> .
+@prefix conv:       <http://purl.org/twc/vocab/conversion/> .
+@prefix irw: <http://www.ontologydesignpatterns.org/ont/web/irw.owl#> .
+@prefix pml:        <http://provenanceweb.org/ns/pml#> .
+
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix sioc:    <http://rdfs.org/sioc/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
+<http://purl.org/twc/id/machine/lebot/MacBookPro6_2>
+   a prov:Entity;
+.
+<http://tw.rpi.edu/instances/TimLebo>
+  a prov:Agent, foaf:Agent;
+  foaf:holdsAccount <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
+.
+<http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>
+   a foaf:OnlineAccount, prov:Agent;
+   foaf:accountName "lebot";
+   dcterms:isPartOf <http://purl.org/twc/id/machine/lebot/MacBookPro6_2>;
+   sioc:account_of      <http://tw.rpi.edu/instances/TimLebo>;
+   prov:actedOnBehalfOf <http://tw.rpi.edu/instances/TimLebo>;
+.
+
+<epoch.ttl>
+   a pmlp:Information, prov:Entity;
+   pmlp:hasModificationDateTime "2014-07-07T12:06:16-04:00"^^xsd:dateTime;
+   pml:wasGeneratedWithPlan <file-copy#52738e89-a40c-434c-890a-3c75f0cad2a7>;
+.
+<file-copy#52738e89-a40c-434c-890a-3c75f0cad2a7> a prov:Plan;
+  dcterms:date "2014-07-07T12:06:24-04:00"^^xsd:dateTime;
+  prov:specializationOf conv:file-copy_Method;
+.
+conv:file-copy_Method a prov:Plan .
+<epoch.ttl>
+   a nfo:FileDataObject;
+   nfo:fileName "epoch.ttl";
+   nfo:hasHash <md5_25d7915e5418b4b78318d62a345cda99_time_1404749184>;
+.
+<md5_25d7915e5418b4b78318d62a345cda99_time_1404749184>
+   a nfo:FileHash; 
+   dcterms:date      "2014-07-07T12:06:24-04:00"^^xsd:dateTime;
+   nfo:hashAlgorithm "md5";
+   nfo:hashValue     "25d7915e5418b4b78318d62a345cda99";
+.
+
+<epoch.ttl> prov:wasDerivedFrom <https://github.com/timrdf/lodcloud/blob/master/data/source/datahub-io/lodcloud-group/version/faqt-brick/epoch.ttl> .
+<https://github.com/timrdf/lodcloud/blob/master/data/source/datahub-io/lodcloud-group/version/faqt-brick/epoch.ttl>
+   a sioc:Item, irw:WebResource, prov:Entity;
+.
+<epoch.ttl> prov:wasDerivedFrom <https://github.com/timrdf/lodcloud/blob/master/data/source/datahub-io/lodcloud-group/version/faqt-brick/epoch.ttl> .
+
+<nodeSet/52738e89-a40c-434c-890a-3c75f0cad2a7>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <epoch.ttl>;
+   pmlj:isConsequentOf <inferenceStep/52738e89-a40c-434c-890a-3c75f0cad2a7>;
+.
+<inferenceStep/52738e89-a40c-434c-890a-3c75f0cad2a7>
+   a pmlj:InferenceStep;
+   pmlj:hasIndex 0;
+   rdfs:seeAlso <nodeSet52738e89-a40c-434c-890a-3c75f0cad2a7_antecedent>;
+#   pmlj:hasAntecedentList ( <nodeSet52738e89-a40c-434c-890a-3c75f0cad2a7_antecedent> );
+   pmlj:hasInferenceEngine <file-copy#52738e89-a40c-434c-890a-3c75f0cad2a7>;
+   pmlj:hasInferenceRule   conv:file-copy_Method;
+   oboro:has_agent          <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
+   hartigprov:involvedActor <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
+.
+
+<wasControlled/52738e89-a40c-434c-890a-3c75f0cad2a7>
+   a oprov:WasControlledBy;
+   oprov:cause  <http://purl.org/twc/id/machine/lebot/MacBookPro6_2#lebot>;
+   oprov:effect <inferenceStep/52738e89-a40c-434c-890a-3c75f0cad2a7>;
+   oprov:endTime "2014-07-07T12:06:24-04:00"^^xsd:dateTime;
+.
+<nodeSet52738e89-a40c-434c-890a-3c75f0cad2a7_antecedent>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <https://github.com/timrdf/lodcloud/blob/master/data/source/datahub-io/lodcloud-group/version/faqt-brick/epoch.ttl>;
+.
+
+<file-copy#52738e89-a40c-434c-890a-3c75f0cad2a7>
+   a pmlp:InferenceEngine, conv:File-copy_Engine, prov:Entity;
+   dcterms:identifier "file-copy#52738e89-a40c-434c-890a-3c75f0cad2a7";
+.
+
+conv:File-copy_Engine rdfs:subClassOf pmlp:InferenceEngine .
