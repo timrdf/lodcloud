@@ -6,15 +6,18 @@
 #3> .
 #
 
+grddl_local='../../src/svg.xsl'
+previous_diagram_local='../../src/lod-cloud_colored.svg'
+saxon.sh $grddl_local svg ttl $previous_diagram_local | sed 's/thedatahub.org/datahub.io/g' > automatic/'lod-cloud_colored.svg.ttl'
 grddl='https://github.com/timrdf/vsr/blob/master/src/xsl/grddl/svg.xsl'
-saxon.sh   source/svg.xsl svg ttl source/lod-cloud_colored.svg | sed 's/thedatahub.org/datahub.io/g' > automatic/lod-cloud_colored.svg.ttl
-justify.sh source/svg.xsl automatic/lod-cloud_colored.svg.ttl $grddl
+justify.sh $previous_diagram_local automatic/'lod-cloud_colored.svg.ttl' $grddl
 
 vsr2grf.sh linksets graffle -w -od automatic source/lodcloud-diagram.rq.rdf
 
-rdf2nt.sh source/lodcloud-diagram.rq.rdf automatic/lod-cloud_colored.svg.ttl > automatic/both.nt
-vsr2grf.sh linksets graffle -w automatic/both.nt 
+rdf2nt.sh source/'lodcloud-diagram.rq.rdf' automatic/'lod-cloud_colored.svg.ttl' > automatic/'the-living-lod-cloud.nt'
+vsr2grf.sh linksets graffle -w automatic/'the-living-lod-cloud.nt'
+#can't b/c two inputs: justify.sh source/'lod-cloud_colored.svg' automatic/'lod-cloud_colored.svg.ttl' $grddl
 
 
-#rdf2nt.sh source/lodcloud-diagram.rq.rdf automatic/lod-cloud_colored.svg.ttl source/answered-in-survey.rq.rdf > manual/both-with-answers.nt
-# vsr2grf.sh linksets graffle -w manual/both-with-answers.nt
+#rdf2nt.sh source/lodcloud-diagram.rq.rdf automatic/lod-cloud_colored.svg.ttl source/answered-in-survey.rq.rdf > manual/the-living-lod-cloud-with-answers.nt
+# vsr2grf.sh linksets graffle -w manual/the-living-lod-cloud-with-answers.nt

@@ -60,7 +60,7 @@ fi
 #-#-#-#-#-#-#-#-#
 version="$1"
 version_reason=""
-url='http://lod-cloud.net/versions/2011-09-19/lod-cloud_colored.svg' #"$2"
+url="$2" #'http://lod-cloud.net/versions/2011-09-19/lod-cloud_colored.svg' #"$2"
 if [[ "$1" == "cr:auto" && ${#url} -gt 0 ]]; then
    version=`urldate.sh $url`
    #echo "Attempting to use URL modification date to name version: $version"
@@ -143,7 +143,7 @@ if [[ ! -d $version || ! -d $version/source || `find $version -empty -type d -na
       if [[ "$url" =~ http* ]]; then                                                       # |
          pcurl.sh $url                                                                     # |
       fi                                                                                   # | 
-      pcurl.sh 'https://raw.githubusercontent.com/timrdf/vsr/master/src/xsl/grddl/svg.xsl' # |
+      #pcurl.sh 'https://raw.githubusercontent.com/timrdf/vsr/master/src/xsl/grddl/svg.xsl' # |
       # cache-queries.sh $CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT -o rdf -q manual/answered-in-survey.rq -od source/
       if [[ "$CSV2RDF4LOD_RETRIEVE_DROID_SOURCES" != "false" ]]; then                      # |
          sleep 1                                                                           # |
