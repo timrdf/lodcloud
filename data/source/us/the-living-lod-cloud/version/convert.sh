@@ -14,3 +14,7 @@ vsr2grf.sh linksets graffle -w -od automatic source/lodcloud-diagram.rq.rdf
 
 rdf2nt.sh source/lodcloud-diagram.rq.rdf automatic/lod-cloud_colored.svg.ttl > automatic/both.nt
 vsr2grf.sh linksets graffle -w automatic/both.nt 
+
+
+#rdf2nt.sh source/lodcloud-diagram.rq.rdf automatic/lod-cloud_colored.svg.ttl source/answered-in-survey.rq.rdf > manual/both-with-answers.nt
+# vsr2grf.sh linksets graffle -w manual/both-with-answers.nt

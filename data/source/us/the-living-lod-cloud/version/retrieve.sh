@@ -144,6 +144,7 @@ if [[ ! -d $version || ! -d $version/source || `find $version -empty -type d -na
          pcurl.sh $url                                                                     # |
       fi                                                                                   # | 
       pcurl.sh 'https://raw.githubusercontent.com/timrdf/vsr/master/src/xsl/grddl/svg.xsl' # |
+      # cache-queries.sh $CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT -o rdf -q manual/answered-in-survey.rq -od source/
       if [[ "$CSV2RDF4LOD_RETRIEVE_DROID_SOURCES" != "false" ]]; then                      # |
          sleep 1                                                                           # |
          cr-droid.sh . > cr-droid.ttl                                                      # |

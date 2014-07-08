@@ -1,11 +1,13 @@
-prefix void:     <http://rdfs.org/ns/void#>
-prefix datafaqs: <http://purl.org/twc/vocab/datafaqs#>
-prefix tag:      <http://www.holygoat.co.uk/owl/redwood/0.1/tags/>
+prefix dcterms:    <http://purl.org/dc/terms/>
+prefix void:       <http://rdfs.org/ns/void#>
+prefix conversion: <http://purl.org/twc/vocab/conversion/>
+prefix datafaqs:   <http://purl.org/twc/vocab/datafaqs#>
+prefix tag:        <http://www.holygoat.co.uk/owl/redwood/0.1/tags/>
 
 construct {
    ?dataset                    # <http://thedatahub.org/dataset/DBpedia>
       a datafaqs:CKANDataset;
-      void:subset ?linkset;
+      void:subset ?linkset
    .
    ?dataset tag:taggedWithTag ?tag .
    ?dataset void:triples      ?triples .
@@ -14,12 +16,23 @@ construct {
       a void:Linkset;
       void:target  ?target;    # <http://thedatahub.org/dataset/aemet>
       void:target  ?dataset;   # <http://thedatahub.org/dataset/DBpedia>
-      void:triples ?overlap;   # 82
+      void:triples ?overlap    # 82
    .
    ?target a datafaqs:CKANDataset .
 }
 where {
-   graph <http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group/version/2014-07-04> {
+   {
+      select ?version
+      where {
+         <http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group>
+            void:subset ?version .
+                        ?version a conversion:VersionedDataset;
+                           dcterms:modified ?date .
+      }
+      order by desc(?date)
+      limit 1
+   }
+   graph ?version {
       ?dataset                    # <http://thedatahub.org/dataset/DBpedia>
          a datafaqs:CKANDataset
       .
