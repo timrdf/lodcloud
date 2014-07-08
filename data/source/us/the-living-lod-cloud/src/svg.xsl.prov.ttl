@@ -1,0 +1,82 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix sioc:       <http://rdfs.org/sioc/ns#> .
+@prefix pmlp:       <http://inference-web.org/2.0/pml-provenance.owl#> .
+@prefix oboro:      <http://obofoundry.org/ro/ro.owl#> .
+@prefix oprov:      <http://openprovenance.org/ontology#> .
+@prefix hartigprov: <http://purl.org/net/provenance/ns#> .
+@prefix nfo:        <http://www.semanticdesktop.org/ontologies/nfo/#> .
+@prefix pmlj:       <http://inference-web.org/2.0/pml-justification.owl#> .
+@prefix conv:       <http://purl.org/twc/vocab/conversion/> .
+@prefix irw: <http://www.ontologydesignpatterns.org/ont/web/irw.owl#> .
+@prefix pml:        <http://provenanceweb.org/ns/pml#> .
+
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix sioc:    <http://rdfs.org/sioc/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
+
+<svg.xsl>
+   a pmlp:Information, prov:Entity;
+   pmlp:hasModificationDateTime "2014-07-08T14:05:21-04:00"^^xsd:dateTime;
+   pml:wasGeneratedWithPlan <file-copy#f664579d-85f7-4eb3-9718-9ca0ec51c591>;
+.
+<file-copy#f664579d-85f7-4eb3-9718-9ca0ec51c591> a prov:Plan;
+  dcterms:date "2014-07-08T14:05:30-04:00"^^xsd:dateTime;
+  prov:specializationOf conv:file-copy_Method;
+.
+conv:file-copy_Method a prov:Plan .
+<svg.xsl>
+   a nfo:FileDataObject;
+   nfo:fileName "svg.xsl";
+   nfo:hasHash <md5_f5960904be36fa792c85e0e394107fc0_time_1404842730>;
+.
+<md5_f5960904be36fa792c85e0e394107fc0_time_1404842730>
+   a nfo:FileHash; 
+   dcterms:date      "2014-07-08T14:05:30-04:00"^^xsd:dateTime;
+   nfo:hashAlgorithm "md5";
+   nfo:hashValue     "f5960904be36fa792c85e0e394107fc0";
+.
+
+<svg.xsl> prov:wasDerivedFrom <https://raw.githubusercontent.com/timrdf/vsr/master/src/xsl/grddl/svg.xsl> .
+<https://raw.githubusercontent.com/timrdf/vsr/master/src/xsl/grddl/svg.xsl>
+   a sioc:Item, irw:WebResource, prov:Entity;
+.
+<svg.xsl> prov:wasDerivedFrom <https://raw.githubusercontent.com/timrdf/vsr/master/src/xsl/grddl/svg.xsl> .
+
+<nodeSet/f664579d-85f7-4eb3-9718-9ca0ec51c591>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <svg.xsl>;
+   pmlj:isConsequentOf <inferenceStep/f664579d-85f7-4eb3-9718-9ca0ec51c591>;
+.
+<inferenceStep/f664579d-85f7-4eb3-9718-9ca0ec51c591>
+   a pmlj:InferenceStep;
+   pmlj:hasIndex 0;
+   rdfs:seeAlso <nodeSetf664579d-85f7-4eb3-9718-9ca0ec51c591_antecedent>;
+#   pmlj:hasAntecedentList ( <nodeSetf664579d-85f7-4eb3-9718-9ca0ec51c591_antecedent> );
+   pmlj:hasInferenceEngine <file-copy#f664579d-85f7-4eb3-9718-9ca0ec51c591>;
+   pmlj:hasInferenceRule   conv:file-copy_Method;
+   oboro:has_agent          [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+   hartigprov:involvedActor [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+.
+
+<wasControlled/f664579d-85f7-4eb3-9718-9ca0ec51c591>
+   a oprov:WasControlledBy;
+   oprov:cause  [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+   oprov:effect <inferenceStep/f664579d-85f7-4eb3-9718-9ca0ec51c591>;
+   oprov:endTime "2014-07-08T14:05:30-04:00"^^xsd:dateTime;
+.
+<nodeSetf664579d-85f7-4eb3-9718-9ca0ec51c591_antecedent>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <https://raw.githubusercontent.com/timrdf/vsr/master/src/xsl/grddl/svg.xsl>;
+.
+
+<file-copy#f664579d-85f7-4eb3-9718-9ca0ec51c591>
+   a pmlp:InferenceEngine, conv:File-copy_Engine, prov:Entity;
+   dcterms:identifier "file-copy#f664579d-85f7-4eb3-9718-9ca0ec51c591";
+.
+
+conv:File-copy_Engine rdfs:subClassOf pmlp:InferenceEngine .
