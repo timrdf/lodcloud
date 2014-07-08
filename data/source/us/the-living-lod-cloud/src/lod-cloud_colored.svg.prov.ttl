@@ -1,0 +1,82 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix sioc:       <http://rdfs.org/sioc/ns#> .
+@prefix pmlp:       <http://inference-web.org/2.0/pml-provenance.owl#> .
+@prefix oboro:      <http://obofoundry.org/ro/ro.owl#> .
+@prefix oprov:      <http://openprovenance.org/ontology#> .
+@prefix hartigprov: <http://purl.org/net/provenance/ns#> .
+@prefix nfo:        <http://www.semanticdesktop.org/ontologies/nfo/#> .
+@prefix pmlj:       <http://inference-web.org/2.0/pml-justification.owl#> .
+@prefix conv:       <http://purl.org/twc/vocab/conversion/> .
+@prefix irw: <http://www.ontologydesignpatterns.org/ont/web/irw.owl#> .
+@prefix pml:        <http://provenanceweb.org/ns/pml#> .
+
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix sioc:    <http://rdfs.org/sioc/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
+
+<lod-cloud_colored.svg>
+   a pmlp:Information, prov:Entity;
+   pmlp:hasModificationDateTime "2014-07-08T14:03:35-04:00"^^xsd:dateTime;
+   pml:wasGeneratedWithPlan <http#19a7560e-137b-4092-a6d4-c3a2ec1ab94d>;
+.
+<http#19a7560e-137b-4092-a6d4-c3a2ec1ab94d> a prov:Plan;
+  dcterms:date "2014-07-08T14:03:44-04:00"^^xsd:dateTime;
+  prov:specializationOf <http://dbpedia.org/resource/Hypertext_Transfer_Protocol>;
+.
+<http://dbpedia.org/resource/Hypertext_Transfer_Protocol> a prov:Plan .
+<lod-cloud_colored.svg>
+   a nfo:FileDataObject;
+   nfo:fileName "lod-cloud_colored.svg";
+   nfo:hasHash <md5_3ab5267ceedabfbf1a7f01ad097aac25_time_1404842624>;
+.
+<md5_3ab5267ceedabfbf1a7f01ad097aac25_time_1404842624>
+   a nfo:FileHash; 
+   dcterms:date      "2014-07-08T14:03:44-04:00"^^xsd:dateTime;
+   nfo:hashAlgorithm "md5";
+   nfo:hashValue     "3ab5267ceedabfbf1a7f01ad097aac25";
+.
+
+<lod-cloud_colored.svg> prov:wasDerivedFrom <http://lod-cloud.net/versions/2011-09-19/lod-cloud_colored.svg> .
+<http://lod-cloud.net/versions/2011-09-19/lod-cloud_colored.svg>
+   a sioc:Item, irw:WebResource, prov:Entity;
+.
+<lod-cloud_colored.svg> prov:wasDerivedFrom <http://lod-cloud.net/versions/2011-09-19/lod-cloud_colored.svg> .
+
+<nodeSet/19a7560e-137b-4092-a6d4-c3a2ec1ab94d>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <lod-cloud_colored.svg>;
+   pmlj:isConsequentOf <inferenceStep/19a7560e-137b-4092-a6d4-c3a2ec1ab94d>;
+.
+<inferenceStep/19a7560e-137b-4092-a6d4-c3a2ec1ab94d>
+   a pmlj:InferenceStep;
+   pmlj:hasIndex 0;
+   rdfs:seeAlso <nodeSet19a7560e-137b-4092-a6d4-c3a2ec1ab94d_antecedent>;
+#   pmlj:hasAntecedentList ( <nodeSet19a7560e-137b-4092-a6d4-c3a2ec1ab94d_antecedent> );
+   pmlj:hasInferenceEngine <http#19a7560e-137b-4092-a6d4-c3a2ec1ab94d>;
+   pmlj:hasInferenceRule   <http://dbpedia.org/resource/Hypertext_Transfer_Protocol>;
+   oboro:has_agent          [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+   hartigprov:involvedActor [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+.
+
+<wasControlled/19a7560e-137b-4092-a6d4-c3a2ec1ab94d>
+   a oprov:WasControlledBy;
+   oprov:cause  [ a foaf:OnlineAccount; foaf:accountName "lebot" ];
+   oprov:effect <inferenceStep/19a7560e-137b-4092-a6d4-c3a2ec1ab94d>;
+   oprov:endTime "2014-07-08T14:03:44-04:00"^^xsd:dateTime;
+.
+<nodeSet19a7560e-137b-4092-a6d4-c3a2ec1ab94d_antecedent>
+   a pmlj:NodeSet;
+   pmlj:hasConclusion <http://lod-cloud.net/versions/2011-09-19/lod-cloud_colored.svg>;
+.
+
+<http#19a7560e-137b-4092-a6d4-c3a2ec1ab94d>
+   a pmlp:InferenceEngine, <http://dbpedia.org/resource/Hypertext_Transfer_Protocol>, prov:Entity;
+   dcterms:identifier "http#19a7560e-137b-4092-a6d4-c3a2ec1ab94d";
+.
+
+<http://dbpedia.org/resource/Hypertext_Transfer_Protocol> rdfs:subClassOf pmlp:InferenceEngine .
