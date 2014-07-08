@@ -9,7 +9,7 @@ where {
    {
       select ?version
       where {
-         <http://purl.org/twc/lodcloud/source/datahub-io/dataset/lodcloud-group>
+         <http://purl.org/twc/lodcloud/source/datahub-io/dataset/lod-tag>
             void:subset ?version .
                         ?version a conversion:VersionedDataset;
                            dcterms:modified ?date .
