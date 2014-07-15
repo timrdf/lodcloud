@@ -75,8 +75,8 @@
       #   a conversion:DataStartRow;
       #];
 
-      conversion:delimits_cell ",";
-      #conversion:delimits_cell "	"; # tab
+      #conversion:delimits_cell ",";
+      conversion:delimits_cell "	"; # tab
       #conversion:delimits_cell "|";   # pipe
       #conversion:delimits_cell ",";   # comma
 
