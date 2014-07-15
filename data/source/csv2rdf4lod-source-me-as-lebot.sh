@@ -4,10 +4,12 @@
 #3>     <https://github.com/timrdf/csv2rdf4lod-automation/wiki/Script:-source-me.sh> .
 
 export CSV2RDF4LOD_CONVERT_PERSON_URI="http://tw.rpi.edu/instances/TimLebo"
-source /home/lebot/prizms/lodcloud/data/source/csv2rdf4lod-source-me-for-lodcloud.sh
-alias lodcloud='sudo su lodcloud'
-export PATH=$PATH`/home/lebot/opt/prizms/bin/install/paths.sh`
-export CLASSPATH=$CLASSPATH`/home/lebot/opt/prizms/bin/install/classpaths.sh`
-export CSV2RDF4LOD_HOME="/home/lebot/opt/prizms/repos/csv2rdf4lod-automation"
-export JENAROOT=/home/lebot/opt/apache-jena-2.10.0
-export DATAFAQS_HOME="/home/lebot/opt/prizms/repos/DataFAQs"
+if [[ "$CSV2RDF4LOD_CONFIG_OMIT" != 'OMIT' ]]; then
+   source /home/lebot/prizms/lodcloud/data/source/csv2rdf4lod-source-me-for-lodcloud.sh
+   alias lodcloud='sudo su lodcloud'
+   export PATH=$PATH`/home/lebot/opt/prizms/bin/install/paths.sh`
+   export CLASSPATH=$CLASSPATH`/home/lebot/opt/prizms/bin/install/classpaths.sh`
+   export CSV2RDF4LOD_HOME="/home/lebot/opt/prizms/repos/csv2rdf4lod-automation"
+   export JENAROOT=/home/lebot/opt/apache-jena-2.10.0
+   export DATAFAQS_HOME="/home/lebot/opt/prizms/repos/DataFAQs"
+fi
