@@ -35,3 +35,7 @@
    conversion:dataset_identifier "public-lod";
    foaf:page <http://lists.w3.org/Archives/Public/public-lod/>;
 .
+
+<http://purl.org/twc/lodcloud/source/lists-w3-org/dataset/public-lod>
+   foaf:page <http://data.dws.informatik.uni-mannheim.de/lodcloud/2014/ISWC-RDB/>;
+.
