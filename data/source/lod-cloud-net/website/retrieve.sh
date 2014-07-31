@@ -12,8 +12,8 @@
 #3>      <https://github.com/timrdf/csv2rdf4lod-automation/wiki/tic-turtle-in-comments>;
 #3> .
 
-web_directory='http://lod-cloud.net/'
-mkdir -p source
-pushd source
+mkdir -p version/wget/source && pushd version/wget/source
+   web_directory='http://lod-cloud.net/'
    wget --mirror -e robots=off --no-parent $web_directory
+   # Downloaded: 69 files, 22M in 1m 11s (321 KB/s)
 popd
