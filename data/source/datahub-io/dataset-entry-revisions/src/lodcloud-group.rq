@@ -3,8 +3,17 @@ prefix conversion: <http://purl.org/twc/vocab/conversion/>
 prefix datafaqs:   <http://purl.org/twc/vocab/datafaqs#>
 prefix prov:       <http://www.w3.org/ns/prov#>
 prefix dcterms:    <http://purl.org/dc/terms/>
+prefix rt:         <http://purl.org/rl/rt/>
 
-select ?dataset ?revision ?created ?agent ?description
+#select ?dataset ?revision ?created ?agent ?description
+construct {
+   ?dataset a rt:RecurringThing .
+   ?revision
+      prov:specializationOf ?dataset;
+      dcterms:created       ?created;
+      dcterms:description   ?description;
+      prov:wasAttributedTo  ?agent .
+}
 where {
    {
       select ?version
