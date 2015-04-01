@@ -1,11 +1,11 @@
 <?php
 
-$conf['endpoint']['local'] = 'http://purl.org/twc/lodcloud/sparql';
+$conf['endpoint']['local'] = 'http://datafaqs.tw.rpi.edu/sparql';
 $conf['home'] = '/var/www/lodspeakr/';
-$conf['basedir'] = 'http://purl.org/twc/lodcloud/';
+$conf['basedir'] = 'http://datafaqs.tw.rpi.edu/';
 $conf['debug'] = false;
 
-$conf['ns']['local']   = 'http://purl.org/twc/lodcloud';
+$conf['ns']['local']   = 'http://datafaqs.tw.rpi.edu';
 
 
 $conf['mirror_external_uris'] = false;

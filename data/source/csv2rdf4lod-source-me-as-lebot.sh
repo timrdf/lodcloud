@@ -13,3 +13,5 @@ if [[ "$CSV2RDF4LOD_CONFIG_OMIT" != 'OMIT' ]]; then
    export JENAROOT=/home/lebot/opt/apache-jena-2.10.0
    export DATAFAQS_HOME="/home/lebot/opt/prizms/repos/DataFAQs"
 fi
+alias prizms='sudo su prizms'
+export JENAROOT=/home/lebot/opt/apache-jena-2.13.0

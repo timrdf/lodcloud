@@ -12,8 +12,7 @@
 #3>      <https://github.com/timrdf/csv2rdf4lod-automation/wiki/tic-turtle-in-comments>;
 #3> .
 
-web_directory='http://lod-cloud.net/'
-mkdir -p source
-pushd source
+web_directory='http://lists.w3.org/Archives/Public/public-prov-wg/'
+mkdir -p source && pushd source
    wget --mirror -e robots=off --no-parent $web_directory
 popd
