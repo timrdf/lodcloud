@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0041)http://km.aifb.kit.edu/projects/btc-2014/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Billion Triples Challenge 2014 Dataset</title>
+		
+	</head>
+	<body>
+
+
+		<h1>Billion Triples Challenge 2014 Dataset</h1>
+
+		<p>
+		The BTC 2014 dataset may be used as basis for submissions to the Big Data (formerly: Billion Triples) Track of the <a href="http://challenge.semanticweb.org/2014/">Semantic Web Challenge</a>.
+		</p>    
+
+
+		<h2>Description</h2>
+
+		<p>
+      The dataset was crawled during February to June 2014.
+      We used several seed sets collected from mulitple sources, including voID descriptions and all example URIs from <a href="http://datahub.io/">CKAN</a>, see the seed files in the data root directory.
+		</p>
+
+		<p>
+      We rewrote blank node identifiers to include the data source in order to provide unique blank nodes for each data source, and appended the data source to the output file.
+      The data is encoded in <a href="http://sw.deri.org/2008/07/n-quads/">NQuads format</a>.
+		</p>
+
+		<p>
+      We provide a file <code>redirects.nx.gz</code> which consists of <code>&lt;source&gt; &lt;target&gt; .</code> tuples derived from 30x redirect HTTP response codes encountered during crawling.
+	  Also, <code>Content-Location:</code> declarations from the HTTP headers go into that file.
+      In addition, we provide <code>access.log.gz</code> files in <a href="http://wiki.squid-cache.org/SquidFaq/SquidLogs#access.log">Squid access.log format</a> for each hop of each crawl.
+		</p>
+
+		<p>
+      Please note that the BTC dataset is collected from the web and as such of varying quality.
+	  For example, we have seen during the crawling that some URIs redirected to different targets at different points of time, e.g., at some point URIs in a certain set all redirected to a HTTP-500 error page.
+      Dealing with noisy data is part of the fun you'll have when working with web data.
+		</p>
+
+
+		<h2>Citation</h2>
+
+		Please cite as:
+		<pre>@misc{btc-2014,
+  author = {Tobias K{\"a}fer and Andreas Harth},
+  title = {{Billion Triples Challenge} data set},
+  howpublished = {Downloaded from http://km.aifb.kit.edu/projects/btc-2014/},
+  year = 2014,
+}</pre>
+		
+		
+		<h2>Crawls</h2>
+
+		<p>
+		We crawled breadth-first and politely.
+		Thus, for each hop, we maintained a queue per pay-level domain (PLD) and took URIs from those queues in a round-robin fashion.
+		If the number of PLDs still having un-visited URIs is below a certain threshold, we discarded the rest of the URIs and moved on to the next hop.
+		Per PLD we ordered the URIs in the queue according to in-link count as a measure of importance such that we do not discard important URIs.
+		We motivated this way of crawling in our <a href="http://events.linkeddata.org/ldow2012/">LDOW2012</a> <a href="http://events.linkeddata.org/ldow2012/papers/ldow2012-paper-14.pdf">paper</a>.
+		</p>
+
+		<p>
+		To counteract the discarding and because we know from our experience that some servers face temporary outages, we fed those answering with HTTP-500 or those who have not been despite having been scheduled, back into the crawl at a later point.
+		</p>
+
+		<p>
+        For each hop, we provide <code>data-{round}.nq.gz</code>, <code>redirects-{round}.nx.gz</code> and <code>access-{round}.log.gz</code> files. We split the largest files from rounds into smaller bites, i.e., <code>data-{round}-{bite}.nq.gz</code>.
+		</p>
+
+		<table style="border-spacing:7px 1px;">
+			<thead style="font-weight:bold; text-align:center;">
+				<tr>
+					<td>Crawl No.</td>
+					<td>Size (gzipped)</td>
+					<td>Size (unzipped)</td>
+					<td>Triple/Quad Count</td>
+					<td>Document Count</td>
+					<td>PLD Count</td>
+				</tr>
+			</thead>
+			<tbody style="text-align:right;">
+				<tr>
+					<td>01</td>
+					<td>3.7G</td>
+					<td>46G</td>
+					<td>211.918.262</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>02</td>
+					<td>4.0G</td>
+					<td>59G</td>
+					<td>247'881'388</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>03</td>
+					<td>4.4M</td>
+					<td>86M</td>
+					<td>412'327</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>04</td>
+					<td>19M</td>
+					<td>203M</td>
+					<td>868'219</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>05</td>
+					<td>7.6G</td>
+					<td>114G</td>
+					<td>501'136'390</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>06</td>
+					<td>0.3M</td>
+					<td>5.1M</td>
+					<td>27'623</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>07</td>
+					<td>5.3G</td>
+					<td>137G</td>
+					<td>563'477'028</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>08</td>
+					<td>0.5G</td>
+					<td>12G</td>
+					<td>40'061'653</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>09</td>
+					<td>7.5G</td>
+					<td>157G</td>
+					<td>565'906'367</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td>2.1G</td>
+					<td>44G</td>
+					<td>164'488'613</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>0.6G</td>
+					<td>11G</td>
+					<td>40'688'530</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>12</td>
+					<td>28M</td>
+					<td>610M</td>
+					<td>2'371'959</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>13</td>
+					<td>15G</td>
+					<td>421G</td>
+					<td>1'399'507'594</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>14</td>
+					<td>5.3G</td>
+					<td>93G</td>
+					<td>352'012'643</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+			</tbody>
+			<tfoot style="font-weight:bold; text-align:right;">
+				<tr>
+					<td>Sum</td>
+					<td>52G</td>
+					<td>1.1T</td>
+					<td>4'090'758'596</td>
+					<td>43'598'858</td>
+					<td>47'560</td>
+				</tr>
+			</tfoot>
+		</table>
+
+
+		<h2>Download</h2>
+		<p>
+		The files are listed in the <a href="http://km.aifb.kit.edu/projects/btc-2014/data/">
+				<code>data/</code>
+			</a> directory.
+      To fetch the content of the entire directory, download the <a href="http://km.aifb.kit.edu/projects/btc-2014/000-CONTENTS">000-CONTENTS</a> file and do 
+
+			<code>
+	$ wget -x -nH -i 000-CONTENTS
+			</code>
+
+	which will download the files while preserving the directory structure.
+		</p>
+
+
+		<h2>Contact</h2>
+		<p>
+      For questions about data format, server issues or download
+      problems contact <a href="mailto:tobias.kaefer(a t)kit.edu">tobias.kaefer(ät)kit.edu</a>.
+		</p>
+
+		<h2>Previous BTC Datasets</h2>
+
+		<ul>
+			<li>
+				<a href="http://km.aifb.kit.edu/projects/btc-2012/">BTC 2012</a>
+			</li>
+			<li>
+				<a href="http://km.aifb.kit.edu/projects/btc-2011/">BTC 2011</a>
+			</li>
+			<li>
+				<a href="http://km.aifb.kit.edu/projects/btc-2010/">BTC 2010</a>
+			</li>
+			<li>
+				<a href="http://km.aifb.kit.edu/projects/btc-2009/">BTC 2009</a>
+			</li>
+		</ul>
+
+
+		<h2>Acknowledgements</h2>
+
+		<p>
+      We would like to thank <a href="http://dws.informatik.uni-mannheim.de/en/people/researchers/max-schmachtenberg/">Max Schmachtenberg</a> for helping with the seed list.
+	  We acknowledge the support of our chair's sysadmins, the <a href="http://www.scc.kit.edu/">Steinbuch Centre for Computing (SCC)</a> and the European Community's Seventh Framework Programme FP7/2007-2013 (PlanetData, Grant 257641). 
+		</p>
+		<a href="http://planet-data.eu/">
+			<img style="width: 5em" src="./Billion Triples Challenge 2014 Dataset_files/PlanetData.jpeg" alt="PlanetData">
+		</a>
+
+
+		<h2>History</h2>
+
+		<dl>
+			<dt>2014-08-07</dt>
+			<dd>Dataset posted</dd>
+		</dl>
+
+		<hr>
+		<a href="http://www.aifb.kit.edu/web/Tobias_K%C3%A4fer">Tobias Käfer</a> and <a href="http://harth.org/andreas/">Andreas Harth</a>
+
+	
+
+</body></html>
