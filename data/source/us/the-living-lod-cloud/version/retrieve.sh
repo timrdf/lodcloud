@@ -135,6 +135,7 @@ if [[ ! -d $version || ! -d $version/source || `find $version -empty -type d -na
    pushd $version/source &> /dev/null
       touch .__CSV2RDF4LOD_retrieval # Make a timestamp so we know what files were created during retrieval.
       # - - - - - - - - - - - - - - - - - - - - Replace below for custom retrieval  - - - \
+      export CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT='http://lodcloud.tw.rpi.edu/sparql'
       if [[ "$CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT" =~ http* ]]; then                       # |
          for rq in `find ../../../src/ -name "*.rq"`; do                                   # |
             cache-queries.sh "$CSV2RDF4LOD_PUBLISH_SPARQL_ENDPOINT" -o rdf -q $rq -od .    # |
