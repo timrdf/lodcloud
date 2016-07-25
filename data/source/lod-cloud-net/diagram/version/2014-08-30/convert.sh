@@ -19,6 +19,7 @@ if [[ -e "$1" ]]; then
    while [[ $# -gt 0 ]]; do
       mundane="$1" && shift
       ttl="automatic/${mundane#source/}.ttl"
+      echo $ttl
       if [[ ! -e $ttl || $mundane -nt $ttl ]]; then
          mkdir -p `dirname $ttl`
          # do some transform here.
