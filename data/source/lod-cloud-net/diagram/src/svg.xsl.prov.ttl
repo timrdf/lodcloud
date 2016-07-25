@@ -1,0 +1,52 @@
+@prefix rdfs:       <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:       <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix sioc:       <http://rdfs.org/sioc/ns#> .
+@prefix pmlp:       <http://inference-web.org/2.0/pml-provenance.owl#> .
+@prefix oboro:      <http://obofoundry.org/ro/ro.owl#> .
+@prefix oprov:      <http://openprovenance.org/ontology#> .
+@prefix hartigprov: <http://purl.org/net/provenance/ns#> .
+@prefix nfo:        <http://www.semanticdesktop.org/ontologies/nfo/#> .
+@prefix pmlj:       <http://inference-web.org/2.0/pml-justification.owl#> .
+@prefix conv:       <http://purl.org/twc/vocab/conversion/> .
+@prefix irw:        <http://www.ontologydesignpatterns.org/ont/web/irw.owl#> .
+@prefix prv:        <http://purl.org/net/provenance/ns#>.
+@prefix pml:        <http://provenanceweb.org/ns/pml#> .
+
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix sioc:    <http://rdfs.org/sioc/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+
+
+<http://purl.org/twc/lodcloud/id/md5/01ca192c4db775965442528dd7bd0d8b/path/18e9613d25e9a08bdde2d3e4c1e3ad39/svg.xsl>
+   a nfo:FileDataObject;
+   nfo:fileName "svg.xsl";
+   dcterms:date "2016-07-25T09:21:46-04:00"^^xsd:dateTime;
+   nfo:hasHash     <http://purl.org/twc/lodcloud/id/md5/01ca192c4db775965442528dd7bd0d8b>;
+   prov:atLocation <http://purl.org/twc/lodcloud/id/path/18e9613d25e9a08bdde2d3e4c1e3ad39/svg.xsl>;
+.
+<http://purl.org/twc/lodcloud/id/md5/01ca192c4db775965442528dd7bd0d8b>
+   a nfo:FileHash; 
+   nfo:hashAlgorithm "md5";
+   nfo:hashValue     "01ca192c4db775965442528dd7bd0d8b";
+.
+<http://purl.org/twc/lodcloud/id/path/18e9613d25e9a08bdde2d3e4c1e3ad39/svg.xsl> prv:serializedBy <svg.xsl> .
+
+<http://purl.org/twc/lodcloud/id/md5/01ca192c4db775965442528dd7bd0d8b/path/18e9613d25e9a08bdde2d3e4c1e3ad39/svg.xsl>
+   a prov:Entity;
+   pml:wasGeneratedWithPlan <http>;
+.
+<http> a prov:Plan .
+
+
+<http://purl.org/twc/lodcloud/id/md5/01ca192c4db775965442528dd7bd0d8b/path/18e9613d25e9a08bdde2d3e4c1e3ad39/svg.xsl>
+   prov:wasDerivedFrom <https://github.com/timrdf/vsr/blob/master/src/xsl/grddl/svg.xsl> .
+<https://github.com/timrdf/vsr/blob/master/src/xsl/grddl/svg.xsl>
+   a sioc:Item, irw:WebResource, prov:Entity;
+.
+<http://purl.org/twc/lodcloud/id/md5/01ca192c4db775965442528dd7bd0d8b/path/18e9613d25e9a08bdde2d3e4c1e3ad39/svg.xsl>
+   prov:wasDerivedFrom
+      <https://github.com/timrdf/vsr/blob/master/src/xsl/grddl/svg.xsl> .
+
