@@ -22,8 +22,8 @@ if [[ -e "$1" ]]; then
       echo $ttl
       if [[ ! -e $ttl || $mundane -nt $ttl ]]; then
          mkdir -p `dirname $ttl`
-         # do some transform here.
-         saxon.sh ../../src/svg.xsl svg ttl $mundane > $ttl
+         echo "@base <`cr-dataset-uri.sh --uri`/> ."  > $ttl
+         saxon.sh ../../src/svg.xsl svg ttl $mundane >> $ttl
       fi
    done
    exit
